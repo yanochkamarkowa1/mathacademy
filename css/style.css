@@ -1,0 +1,159 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #555;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 13px;
+    line-height: 1.2;
+    background: #fff url(../img/body.jpg) center top no-repeat;
+}
+html, button, input, select, textarea {
+    font-family: "Open sans", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: #555;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+a, a:link, a:visited {
+    color: #27bbb6;
+    font-weight: normal;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a.more {
+    display: inline-block;
+    font-weight: 700;
+
+}
+
+p {
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+}
+
+em {
+    color: #000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 34px;
+    margin: 0 0 20px;
+    padding: 5px 0
+}
+
+h2 {
+    font-size: 28px;
+    margin: 0 0 15px;
+    padding: 5px 0;
+}
+
+h3 {
+    font-size: 24px;
+    margin: 0 0 15px;
+    padding: 0;
+}
+
+h4 {
+    font-size: 18px;
+    margin: 0 0 15px;
+    padding: 0;
+}
+
+h5 {
+    font-size: 16px;
+    margin: 0 0 10px;
+    padding: 0;
+}
+
+h6 {
+    font-size: 14px;
+    margin: 0 0 5px;
+    padding: 0;
+}
+
+.cleaner {
+    clear: both
+}
+
+
+#wrapper {
+    width: 980px;
+    padding: 0 10px;
+    margin: 0 auto;
+    background: url(../img/body.jpg) top center no-repeat
+}
+
+#header {
+    width: 900px;
+    padding: 30px 40px;
+    background: url(../img/header.png) bottom center no-repeat
+}
+
+.header__logo {
+    width: 70px;
+    height: 70px;
+}
+
+#site_title {
+    float: left;
+}
+
+#site_title h1 {
+    margin: 0;
+    padding: 0;
+}
+
+#site_title h1 a {
+    display: block;
+    width: 933px;
+    height: 90px;
+    color: #fff;
+    text-indent: -10000px;
+    line-height: 3;
+    background: url(../img/header_title.png) bottom center no-repeat
+}
+
+#main {
+    clear: both;
+    width: 900px;
+    padding: 40px 40px 0;
+}
+
+#main p {
+    margin-bottom: 10px
+}
+#footer_wrapper {
+    clear: both;
+    width: 100%;
+    background: #343434 url(../img/footer_wrapper.jpg) repeat-x top;
+}
+
+#footer {
+    clear: both;
+    width: 900px;
+    padding: 130px 40px 30px;
+    color: #ccc;
+    text-align: center;
+    margin: 0 auto;
+    background: url(../img/footer.jpg) center top no-repeat;
+}
+
+#footer a {
+    color: #fff;
+    text-decoration: underline;
+}
