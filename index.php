@@ -9,6 +9,9 @@
 <body>
 <div id="wrapper">
     <div id="header">
+
+
+        <test></test>
         <div id="site_title"><h1><a href="index.php"></a></h1></div>
         <a href="http://tsput.ru" target="_blank"><img src="img/tgpu.png" class="header__logo" alt="logo"/></a>
         <div id="menu" class="ddsmoothmenu">
