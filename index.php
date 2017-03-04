@@ -5,6 +5,11 @@
     <title>Юношеская областная физико-математическая школа</title>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/ddsmoothmenu.css"/>
+
+
+
+
+
 </head>
 <body>
 <div id="wrapper">
