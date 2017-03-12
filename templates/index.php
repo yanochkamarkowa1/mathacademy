@@ -5,11 +5,9 @@
 <div class="news">
     <h4>Дела текущие</h4>
     <table>
-        <tr><td><?=date('d.m.Y')?></td><td><a href="#">Lorem ipsum dolor sit amet, consr adipiscing elit.</a></td></tr>
-        <tr><td><?=date('d.m.Y')?></td><td><a href="#">Lorem ipsum dolor sit amet, ctur adipiscing elit.</a></td></tr>
-        <tr><td><?=date('d.m.Y')?></td><td><a href="#">Lorem ipsum dolor sit amet, cotetur adipiscing elit.</a></td></tr>
-        <tr><td><?=date('d.m.Y')?></td><td><a href="#">Lorem ipsum dolor sit amet, cotetur adipiscing elit.</a></td></tr>
-        <tr><td><?=date('d.m.Y')?></td><td><a href="#">Lorem ipsum dolor sit amet, cotetur adipiscing elit.</a></td></tr>
+        <?foreach($news as $item):?>
+            <tr><td><?=$item['data']?></td><td><a href="#"><?=$item['name']?></a></td></tr>
+        <?endforeach;?>
     </table>
 </div>
 <div class="about-text">
