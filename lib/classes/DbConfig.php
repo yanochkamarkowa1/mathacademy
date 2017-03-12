@@ -1,4 +1,8 @@
 <?
+
+/**
+ * Класс для подключения к базе данных
+ */
 class DbConfig
 {
     private $host = '127.0.0.1';
@@ -7,6 +11,10 @@ class DbConfig
     private $pass = '';
     private $charset = 'utf8';
 
+    /**
+     * Производит подключение к базе данных
+     * @return PDO
+     */
     public function getConnect()
     {
         $dsn = "mysql:host=$this->host;dbname=$this->db;charset=$this->charset";

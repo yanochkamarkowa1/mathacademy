@@ -1,3 +1,6 @@
+@import "index.css";
+@import "news.css";
+@import "news_detail.css";
 body {
     margin: 0;
     padding: 0;
@@ -18,7 +21,7 @@ html, button, input, select, textarea {
 a, a:link, a:visited {
     color: #27bbb6;
     font-weight: normal;
-    text-decoration: underline;
+    text-decoration: none;
     font-size: 14px;
 }
 
@@ -142,6 +145,13 @@ h6 {
     padding: 0 10px;
     margin: 0 auto;
 }
+
+#main__wrapper:after{
+    content: " ";
+    clear: both;
+    display: block;
+}
+
 #footer_wrapper {
     clear: both;
     width: 100%;
@@ -203,113 +213,4 @@ h6 {
     padding-left: 50px;
     text-decoration: none;
     color: inherit;
-}
-
-.about-slider{
-    background: #bbf8f5;
-    padding: 20px 60px;
-    display: inline-block;
-    border-radius: 20px;
-    float: left;
-}
-
-.about-slider img{
-    width: 450px;
-}
-
-.news{
-    width: 350px;
-    display: inline-block;
-    float: left;
-    margin-left: 20px;
-    padding: 40px 20px 20px 20px;
-    border-radius: 15px;
-    background: #bbf8f5;
-    position: relative;
-}
-
-.news td:nth-child(2){
-    padding: 10px 0 0 20px;
-}
-
-.news a{
-    font-size: 15px;
-    color: inherit;
-    text-decoration: none;
-}
-
-
-.news a:hover{
-    color: #000066;
-}
-
-.news h4, .about-text h4{
-    position: absolute;
-    background: #dee3f5;
-    padding: 10px;
-    border: 2px solid #66abd9;
-    border-radius: 15px;
-    left: 25px;
-    top: -15px;
-}
-
-.about-text{
-    display: inline-block;
-    margin-top: 20px;
-    background: #bbf8f5;
-    padding: 50px;
-    border-radius: 25px;
-    position: relative;
-}
-
-.news-list{
-    width: 100%;
-}
-
-.news-item{
-    width: 100%;
-    margin: 10px 0;
-    border: 1px #c6fffd solid;
-    border-radius: 10px;
-    background: linear-gradient(to top, white, #e4fffe);
-}
-
-.news-item:after{
-    content: " ";
-    clear: both;
-    display: block;
-}
-
-.news-item__img{
-    height: 100px;
-    padding: 20px;
-    display: inline-block;
-    float: left;
-}
-
-.news-item__img img{
-    height: 100%;
-}
-
-.news-item__title{
-    padding-top: 10px;
-}
-
-.news-item__title h4{
-    color: #000066;
-}
-
-.news-item__detail{
-    float: right;
-    padding-right: 30px;
-    padding-top: 30px;
-}
-
-.news-item__date{
-    font-weight: bold;
-    padding-bottom: 4px;
-}
-
-.clear{
-    clear: both;
 }

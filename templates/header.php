@@ -13,7 +13,7 @@
         <a href="http://tsput.ru" target="_blank"><img src="../img/tgpu.png" class="header__logo" alt="logo"/></a>
         <div id="menu" class="ddsmoothmenu">
             <ul>
-                <li><a href="index.php" class="selected">Главная</a></li>
+                <li><a href="index.php">Главная</a></li>
                 <li><a href="news.php">Новости</a></li>
                 <li><a href="timetable.php">Расписание</a></li>
                 <li><a href="konkurs.php">Мероприятия</a></li>

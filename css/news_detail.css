@@ -1,0 +1,38 @@
+.news-detail{
+    position: relative;
+}
+.news-detail--img{
+    float: left;
+    width: 200px;
+    padding: 0 20px 20px 0;
+}
+
+.news-detail--img img{
+    width: 100%;
+}
+
+.news-detail--date{
+    padding-bottom: 20px;
+}
+
+.news-detail--content p{
+    text-indent: 20px;
+}
+
+.news-detail--title h1{
+    color: #000066;
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.news-detail--back{
+    position: absolute;
+    right: 30px;
+    bottom: -35px;
+}
+
+.news-detail:after{
+    content: " ";
+    clear: both;
+    display: block;
+}

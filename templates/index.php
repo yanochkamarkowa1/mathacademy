@@ -6,7 +6,7 @@
     <h4>Дела текущие</h4>
     <table>
         <?foreach($news as $item):?>
-            <tr><td><?=$item['data']?></td><td><a href="#"><?=$item['name']?></a></td></tr>
+            <tr><td><?=$item['data']?></td><td><a href="/news_detail.php?id=<?=$item['id']?>"><?=$item['name']?></a></td></tr>
         <?endforeach;?>
     </table>
 </div>
