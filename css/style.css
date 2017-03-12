@@ -191,7 +191,7 @@ h6 {
     padding-top: 20px;
 }
 
-.children-menu li{
+.children-menu > li{
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     background: linear-gradient(to top, white, rgba(60, 0, 175, 0.3));
@@ -201,16 +201,54 @@ h6 {
     display: inline-block;
     transition-duration: 1s;
     transition-property: background;
+    position: relative;
+}
+
+.children-menu > li:hover .children-menu__child{
+    opacity: 1;
+    display: block;
+}
+
+.children-menu__child{
+    transition-property: opacity;
+    transition-duration: 1s;
 }
 
 .children-menu li:hover, .children-menu li.active{
     background: rgb(4, 206, 198);
 }
 
-.children-menu a{
+.children-menu > li > a{
     display: block;
     padding-right: 50px;
     padding-left: 50px;
     text-decoration: none;
     color: inherit;
+}
+
+.children-menu__child{
+    background: linear-gradient(to top,rgba(60, 0, 175, 0.3), white);
+    position: absolute;
+    padding-left: 0;
+    left: 0;
+    width: 100%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display: none;
+    opacity: 0;
+}
+.children-menu__child > li{
+    display: block;
+    padding-left: 15px;
+}
+
+.children-menu__child > li a{
+    line-height: 50px;
+    display: block;
+    color: black;
+}
+
+.children-menu__child > li:last-child{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }

@@ -37,10 +37,18 @@
         <ul class="children-menu">
             <?foreach ($menu as $link):?>
                 <?if($link['is_active']):?>
-                    <li class="active"><a href="<?=$link['url']?>"><?=$link['title']?></a></li>
+                    <li class="active"><a href="<?=$link['url']?>"><?=$link['title']?></a>
                 <?else:?>
-                    <li><a href="<?=$link['url']?>"><?=$link['title']?></a></li>
+                    <li><a href="<?=$link['url']?>"><?=$link['title']?></a>
                 <?endif?>
+                <?if(is_array($link['children'])):?>
+                    <ul class="children-menu__child">
+                    <?foreach($link['children'] as $child):?>
+                        <li><a href="<?=$child['url']?>"><?=$child['title']?></a></li>
+                    <?endforeach?>
+                    </ul>
+                <?endif;?>
+                </li>
             <?endforeach?>
         </ul>
         <div class="main__content">
