@@ -8,6 +8,7 @@ class Task
     protected $pdo;
     protected $count;
     protected $page;
+    protected $category;
 
     public function __construct()
     {
@@ -21,20 +22,46 @@ class Task
      * @param $category int категория
      * @return array список задач
      */
-    public function getNewsList($page = 1, $count = 10, $category = null)
+    public function getTasksList($page = 1, $count = 10, $category = null)
     {
         $this->count = $count;
         $this->page = $page;
+        $this->category = $category;
 
         $limitFrom = $count * ($page - 1);
-        if($category) {
-            $query = "SELECT * FROM `task` WHERE `category` = $category LIMIT $limitFrom, $count";
+        if($this->category) {
+            $query = "SELECT * FROM `task` WHERE `category` = $this->category LIMIT $limitFrom, $count";
         } else {
             $query = "SELECT * FROM `task` LIMIT $limitFrom, $count";
         }
-        $tasks = $this->pdo->query($query)->fetchAll();
+        $result = $this->pdo->query($query);
+        $tasks = [];
+        while($task = $result->fetch()){
+            $task['content'] = mathfilter($task['content'], 12, '/cache/img/');
+            $task['solution'] = mathfilter($task['solution'], 12, '/cache/img/');
+            $tasks[] = $task;
+        }
         return $tasks;
     }
+
+    /**
+     * Возвращает массив с количеством страниц и текущей страницей
+     * @return array
+     */
+    public function getPagination()
+    {
+        $query = $this->pdo->query(
+            "SELECT COUNT(*) AS count FROM `task`"
+        );
+        $result = $query->fetch();
+        $countNews = $result['count'];
+        $countPage = ceil($countNews / $this->count);
+        return [
+            'count_page' => $countPage,
+            'current_page' => $this->page
+        ];
+    }
+
 
     /**
      * Получает список категорий задач
@@ -43,5 +70,21 @@ class Task
     public function getCategoryList()
     {
         return $this->pdo->query("SELECT * FROM `category_task`")->fetchAll();
+    }
+
+    /**
+     * Получает имя текущей категории
+     * @return array|bool
+     */
+    public function getCurrentCategory()
+    {
+        if ($this->category) {
+            return $this->pdo
+                        ->query(
+                            "SELECT `name_category` FROM `category_task` WHERE `id` = $this->category"
+                        )->fetch()['name_category'];
+        } else {
+            return false;
+        }
     }
 }

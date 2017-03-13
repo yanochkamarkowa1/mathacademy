@@ -1,6 +1,7 @@
 @import "index.css";
 @import "news.css";
 @import "news_detail.css";
+@import "tasks.css";
 body {
     margin: 0;
     padding: 0;
@@ -251,4 +252,29 @@ h6 {
 .children-menu__child > li:last-child{
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+}
+
+
+
+.pagination{
+    padding-top: 20px;
+}
+
+.pagination__item{
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+a.pagination__item{
+    text-decoration: none;
+}
+
+a.pagination__item:hover{
+    background: #abf5f2;
+}
+
+span.pagination__item{
+    background: #abf5f2;
 }

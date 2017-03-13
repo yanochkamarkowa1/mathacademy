@@ -9,7 +9,7 @@
             <div class="news-item__detail"><a href="news_detail.php?id=<?=$item['id']?>">Подробнее</a></div>
         </div>
     <?endforeach;?>
-    <div class="news-pagination">
+    <div class="pagination">
         <?for($i = 1; $i <= $pagination['count_page']; $i++):?>
             <?if($i == $pagination['current_page']):?>
                 <span class="pagination__item"><?=$i?></span>

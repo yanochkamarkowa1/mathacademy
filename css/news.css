@@ -45,30 +45,3 @@
     font-weight: bold;
     padding-bottom: 4px;
 }
-
-.clear{
-    clear: both;
-}
-
-.news-pagination{
-    padding-top: 20px;
-}
-
-.pagination__item{
-    border: 1px solid gray;
-    padding: 10px;
-    border-radius: 5px;
-    margin-left: 10px;
-}
-
-a.pagination__item{
-    text-decoration: none;
-}
-
-a.pagination__item:hover{
-    background: #abf5f2;
-}
-
-span.pagination__item{
-    background: #abf5f2;
-}
