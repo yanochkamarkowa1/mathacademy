@@ -36,6 +36,14 @@ class Menu
                 'alias' => [
                     '/tasks.php'
                 ]
+            ],
+            'teachers' => [
+                'title'=> 'Преподаватели',
+                'url' => '/teachers.php',
+                'is_active' => false,
+                'alias' => [
+                    '/teachers.php'
+                ]
             ]
         ];
         $this->setActive();
