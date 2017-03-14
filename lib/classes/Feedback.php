@@ -11,11 +11,27 @@ class Feedback
         $this->pdo = (new DbConfig())->getConnect();
     }
 
-    public function addFeedback($fullName, $email, $text)
+    public function addFeedback($fullName, $email, $text, $captcha)
     {
+        $secret = '6LdJ8RgUAAAAAFtTCdZx7FlYdNtVQYZM1U01p_8Z'; /*TODO поменять при переносе*/
         $date = date('Y-m-d');
         $errors = [];
         $isError = false;
+        $reCaptcha = new ReCaptcha($secret);
+
+        if ($captcha) {
+            $response = $reCaptcha->verifyResponse(
+                $_SERVER["REMOTE_ADDR"],
+                $captcha
+            );
+            if ($response == null || !$response->success) {
+                $errors['captcha'] = 'Проверка не пройдена';
+                $isError = true;
+            }
+        } else {
+            $errors['captcha'] = 'Проверка не пройдена';
+            $isError = true;
+        }
 
         if(empty($fullName)){
             $errors['fio'] = 'Введите ФИО';

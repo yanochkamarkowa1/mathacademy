@@ -1,6 +1,7 @@
 <?
 /* Подключение сторонних библиотек */
 require_once($_SERVER['DOCUMENT_ROOT'] . '/lib/vendor/phpmathpublisher/mathpublisher.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/lib/vendor/recaptchalib.php');
 
 /* Подключение классов */
 require_once($_SERVER['DOCUMENT_ROOT'] . '/lib/classes/DbConfig.php');

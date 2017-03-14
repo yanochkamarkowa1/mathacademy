@@ -30,6 +30,15 @@
         </tr>
         <tr>
             <td></td>
+            <td>
+                <?if($errors['captcha']):?>
+                    <div class="form__error"><?=$errors['captcha']?></div>
+                <?endif;?>
+                <div class="g-recaptcha" data-sitekey="6LdJ8RgUAAAAAPPjRP5xh6otObhJbOJMFFWdDvu4"></div> <!--TODO поменять при переносе-->
+            </td>
+        </tr>
+        <tr>
+            <td></td>
             <td><input name="submit" type="submit" value="Отправить">
                 <?if($formDone):?>
                     <div class="form__done">Форма успешно отправлена</div>
