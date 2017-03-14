@@ -44,6 +44,22 @@ class Menu
                 'alias' => [
                     '/teachers.php'
                 ]
+            ],
+            'links' => [
+                'title'=> 'Полезные ссылки',
+                'url' => '/links.php',
+                'is_active' => false,
+                'alias' => [
+                    '/links.php'
+                ]
+            ],
+            'feedback' => [
+                'title'=> 'Обратная связь',
+                'url' => '/feedback.php',
+                'is_active' => false,
+                'alias' => [
+                    '/feedback.php'
+                ]
             ]
         ];
         $this->setActive();

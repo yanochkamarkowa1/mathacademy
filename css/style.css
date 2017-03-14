@@ -3,6 +3,9 @@
 @import "news_detail.css";
 @import "tasks.css";
 @import "teachers.css";
+@import "links.css";
+@import "feedback.css";
+
 body {
     margin: 0;
     padding: 0;
@@ -278,4 +281,11 @@ a.pagination__item:hover{
 
 span.pagination__item{
     background: #abf5f2;
+}
+.form__error{
+    color: red;
+}
+.form__done{
+    color: green;
+    padding-top: 10px;
 }
