@@ -3,8 +3,6 @@
 class User
 {
     protected $pdo;
-    protected $count;
-    protected $page;
 
     public function __construct()
     {
@@ -13,17 +11,10 @@ class User
 
     /**
      * Возвращает список преподавателей
-     * @param $page int страница
-     * @param $count int количество
-     * @return array список задач
+     * @return array список преподавателей
      */
-    public function getTeachersList($page = 1, $count = 10)
+    public function getTeachersList()
     {
-        $this->count = $count;
-        $this->page = $page;
-
-        $limitFrom = $count * ($page - 1);
-
         $query = "SELECT
           `users`.`name`,
           `users`.`surname`,
@@ -39,11 +30,10 @@ class User
           INNER JOIN `place_work` ON `users`.`place_work` = `place_work`.`id`
           INNER JOIN `location` ON `users`.`location` = `location`.`id`
           INNER JOIN `position` ON `users`.`position` = `position`.`id`
-        WHERE `privilege`.`id` = 2
-        LIMIT $limitFrom, $this->count";
+        WHERE `users`.`rights` = 2";
 
-        $users = $this->pdo->query($query)->fetchAll();
+        $teachers = $this->pdo->query($query)->fetchAll();
 
-        return $users;
+        return $teachers;
     }
 }

@@ -2,6 +2,7 @@
 @import "news.css";
 @import "news_detail.css";
 @import "tasks.css";
+@import "teachers.css";
 body {
     margin: 0;
     padding: 0;
@@ -221,8 +222,8 @@ h6 {
 
 .children-menu > li > a{
     display: block;
-    padding-right: 50px;
-    padding-left: 50px;
+    padding-right: 30px;
+    padding-left: 30px;
     text-decoration: none;
     color: inherit;
 }
@@ -232,7 +233,6 @@ h6 {
     position: absolute;
     padding-left: 0;
     left: 0;
-    width: 100%;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     display: none;
@@ -247,6 +247,7 @@ h6 {
     line-height: 50px;
     display: block;
     color: black;
+    padding-right: 15px;
 }
 
 .children-menu__child > li:last-child{
