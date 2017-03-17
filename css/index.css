@@ -87,7 +87,6 @@
     border-radius: 20px;
     transition-duration: 0.5s;
     transition-property: background;
-
 }
 .links-item__container:nth-child(3n-2) .links-item{
     float: left;
@@ -106,12 +105,12 @@
 }
 .links-item a{
     display: block;
-    /*padding: 0 30px;*/
     height: 100px;
     text-align: center;
 }
 .links-item img{
     height: 100%;
+    width: 85%;
     transition: filter 0.5s ease, -webkit-filter 0.5s ease;
 }
 .links-item:hover img{

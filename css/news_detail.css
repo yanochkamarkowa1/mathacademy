@@ -29,6 +29,7 @@
     position: absolute;
     right: 30px;
     bottom: -35px;
+    z-index: 1;
 }
 
 .news-detail:after{

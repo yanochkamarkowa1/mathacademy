@@ -1,3 +1,5 @@
 <? require_once($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php') ?>
-<iframe src="http://docs.google.com/gview?url=http://g-l-memorial.ice.ru/files/451935/Kuznetsov_2016.ppt&embedded=true" style="width:550px; height:450px;" frameborder="0"></iframe>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/2ubiOEX7130uZo" width="595" height="485" frameborder="0"
+        marginwidth="0" marginheight="0" scrolling="no"
+        style="border:1px solid #CCC; border-width:1px; display: block; margin: auto; margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
 <? require_once($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php') ?>
