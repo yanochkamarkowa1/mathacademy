@@ -37,8 +37,7 @@
 
 .news-item__detail{
     float: right;
-    padding-right: 30px;
-    padding-top: 30px;
+    padding: 30px 30px 15px 0;
 }
 
 .news-item__date{

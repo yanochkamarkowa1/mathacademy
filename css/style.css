@@ -3,7 +3,6 @@
 @import "news_detail.css";
 @import "tasks.css";
 @import "teachers.css";
-@import "links.css";
 @import "feedback.css";
 
 body {
@@ -161,6 +160,7 @@ h6 {
     clear: both;
     width: 100%;
     background: #343434 url(../img/footer_wrapper.jpg) repeat-x top;
+    position: relative;
 }
 
 #footer {
@@ -262,6 +262,7 @@ h6 {
 
 .pagination{
     padding-top: 20px;
+    height: 27px;
 }
 
 .pagination__item{
@@ -288,4 +289,10 @@ span.pagination__item{
 .form__done{
     color: green;
     padding-top: 10px;
+}
+
+#qoo-counter{
+    position: absolute !important;
+    right: 20px;
+    bottom: 17px;
 }

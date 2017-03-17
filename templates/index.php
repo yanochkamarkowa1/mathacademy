@@ -1,6 +1,6 @@
 <? require_once($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php') ?>
 <div class="about-slider">
-    <img src="http://www.radostmoya.ru/uploads/images/videoPreview/Logo.jpg">
+    <img src="/img/upload/welcome.jpg">
 </div>
 <div class="news">
     <h4>Дела текущие</h4>
@@ -22,13 +22,12 @@
         расширение общего кругозора учащихся, формирование психологической готовности к решению трудных и
         нестандартных задач.
     </p>
-    <p>
-        Программа включает в себя темы и задачи, которые могут быть условно разнесены на три раздела:
-    <ul>– углубление школьного курса;</ul>
-    <ul> – факультативный материал;</ul>
-    <ul> – олимпиадные задачи начального уровня.</ul>
-
-    </p>
+    <p>Программа включает в себя темы и задачи, которые могут быть условно разнесены на три раздела:</p>
+    <ul>
+        <li>– углубление школьного курса;</li>
+        <li>– факультативный материал;</li>
+        <li>– олимпиадные задачи начального уровня.</li>
+    </ul>
     <p>
         Ребята не всегда имеют возможность сделать верный выбор в своих увлечениях или пристрастиях,
         разобраться в своих способностях и наклонностях, если им вовремя не удалось окунуться в необходимую
@@ -63,5 +62,56 @@
         <b>Телефон: 8(4872) 65-78-29</b> (деканат факультета математики, физики и информатики).
 
     </p>
+</div>
+<div class="links-list">
+    <h4>Полезные ссылки</h4>
+    <div class="links-item__container">
+        <div class="links-item">
+            <div class="links-item__title">МАЛЫЙ МЕХМАТ МГУ</div>
+            <a href="http://mmmf.msu.ru/for_schools/">
+                <img src="/img/upload/mechmat.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="links-item__container">
+        <div class="links-item">
+            <div class="links-item__title">Math.ru</div>
+            <a href="http://www.math.ru/">
+                <img src="/img/upload/math.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="links-item__container">
+        <div class="links-item">
+            <div class="links-item__title">Математические этюды</div>
+            <a href="http://www.etudes.ru/">
+                <img src="/img/upload/etudes.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="links-item__container">
+        <div class="links-item">
+            <div class="links-item__title">Математика - онлайн</div>
+            <a href="http://www.math-on-line.com">
+                <img src="/img/upload/mathonline.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="links-item__container">
+        <div class="links-item">
+            <div class="links-item__title">ТГПУ им. Л. Н. Толстого</div>
+            <a href="http://tsput.ru">
+                <img src="/img/tgpu.png">
+            </a>
+        </div>
+    </div>
+    <div class="links-item__container">
+        <div class="links-item">
+            <div class="links-item__title">ТГПУ им. Л. Н. Толстого</div>
+            <a href="http://tsput.ru">
+                <img src="/img/tgpu.png">
+            </a>
+        </div>
+    </div>
 </div>
 <? require_once($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php') ?>

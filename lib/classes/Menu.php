@@ -37,20 +37,20 @@ class Menu
                     '/tasks.php'
                 ]
             ],
+            'play' => [
+                'title'=> 'Поиграем',
+                'url' => '/play.php',
+                'is_active' => false,
+                'alias' => [
+                    '/play.php'
+                ]
+            ],
             'teachers' => [
                 'title'=> 'Преподаватели',
                 'url' => '/teachers.php',
                 'is_active' => false,
                 'alias' => [
                     '/teachers.php'
-                ]
-            ],
-            'links' => [
-                'title'=> 'Полезные ссылки',
-                'url' => '/links.php',
-                'is_active' => false,
-                'alias' => [
-                    '/links.php'
                 ]
             ],
             'feedback' => [
