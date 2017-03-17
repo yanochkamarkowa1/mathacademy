@@ -1,0 +1,37 @@
+.teachers-list{
+    width: 100%;
+}
+
+.teachers-item{
+    width: 100%;
+    margin: 10px 0;
+    border: 1px #c6fffd solid;
+    border-radius: 10px;
+    background: linear-gradient(to top, white, #e4fffe);
+}
+
+.teachers-item:after{
+    content: " ";
+    clear: both;
+    display: block;
+}
+
+.teachers-item__img{
+    height: 170px;
+    padding: 20px;
+    display: inline-block;
+    float: left;
+}
+
+.teachers-item__img img{
+    height: 100%;
+}
+
+.teachers-item__fio{
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.teachers-item__fio h4{
+    color: #000066;
+}

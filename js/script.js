@@ -4,4 +4,8 @@ ddsmoothmenu.init({
     classname: 'ddsmoothmenu', //class added to menu's outer DIV
     //customtheme: ["#1c5a80", "#18374a"],
     contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
-})
+});
+
+$('.task-item__show').click(function () {
+    $(this).parent().find('.task-item__solution').toggle(300);
+});

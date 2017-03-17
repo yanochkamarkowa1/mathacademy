@@ -1,2 +1,4 @@
 /.idea/
-/img/upload
+/img/upload/
+/lib/vendor/
+/cache/

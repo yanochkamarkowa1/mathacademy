@@ -1,0 +1,33 @@
+.feedback-form table{
+    margin: auto;
+    background: #abf5f2;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: white 0 0 20px 0 inset;
+}
+.feedback-form label{
+    font-size: 14px;
+    padding-right: 10px;
+}
+.feedback-form textarea, .feedback-form input{
+    width: 300px;
+    border: none;
+    box-shadow: #000066 0 0 3px 0 inset;
+    outline: none;
+    border-radius: 5px;
+}
+.feedback-form textarea:focus, .feedback-form input:focus{
+    box-shadow: #000066 0 0 5px 0 inset;
+}
+.feedback-form textarea{
+    height: 100px;
+}
+.feedback-form input{
+    padding-right: 4px;
+    height: 25px;
+    text-indent: 10px;
+}
+
+.feedback-form input[type="submit"]{
+    background: white;
+}

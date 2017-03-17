@@ -1,15 +1,12 @@
 <?
 
-class News
+/**
+ * Класс для работы с новостями
+ */
+class News extends EntityBase
 {
     private $count;
     private $page;
-    private $pdo;
-
-    public function __construct()
-    {
-        $this->pdo = (new DbConfig())->getConnect();
-    }
 
     /**
      * Возвращает список новостей
@@ -23,8 +20,9 @@ class News
         $this->page = $page;
 
         $limitFrom = $count * ($page - 1);
-        $limitTo = $limitFrom + $count;
-        $result = $this->pdo->query("SELECT * FROM `news` ORDER BY `data` DESC LIMIT $limitFrom, $limitTo");
+        $result = $this->pdo->query(
+            "SELECT `id`, `data`, `name`, `description`, `foto` FROM `news` ORDER BY `data` DESC LIMIT $limitFrom, $count"
+        );
         $news = [];
         while ($item = $result->fetch()) {
             $item['data'] = date('d.m.Y', strtotime($item['data']));
@@ -39,7 +37,9 @@ class News
      */
     public function getPagination()
     {
-        $query = $this->pdo->query("SELECT COUNT(*) FROM `news`");
+        $query = $this->pdo->query(
+            "SELECT COUNT(*) AS count FROM `news`"
+        );
         $result = $query->fetch();
         $countNews = $result['count'];
         $countPage = ceil($countNews / $this->count);
@@ -51,13 +51,16 @@ class News
 
     /**
      * Получает новость
-     * @param $id int id Новости
+     * @param $id int id новости
      * @return mixed
      */
     public function getNewsById($id)
     {
-        $result = $this->pdo->query("SELECT * FROM `news` WHERE `id` = $id");
-        return $result->fetch();
+        $result = $this->pdo->query(
+            "SELECT `id`, `data`, `name`, `content`, `foto`  FROM `news` WHERE `id` = $id"
+        )->fetch();
+        $result['data'] = date('d.m.Y', strtotime($result['data']));
+        return $result;
     }
 
 }

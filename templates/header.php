@@ -13,7 +13,7 @@
         <a href="http://tsput.ru" target="_blank"><img src="../img/tgpu.png" class="header__logo" alt="logo"/></a>
         <div id="menu" class="ddsmoothmenu">
             <ul>
-                <li><a href="index.php" class="selected">Главная</a></li>
+                <li><a href="index.php">Главная</a></li>
                 <li><a href="news.php">Новости</a></li>
                 <li><a href="timetable.php">Расписание</a></li>
                 <li><a href="konkurs.php">Мероприятия</a></li>
@@ -37,10 +37,18 @@
         <ul class="children-menu">
             <?foreach ($menu as $link):?>
                 <?if($link['is_active']):?>
-                    <li class="active"><a href="<?=$link['url']?>"><?=$link['title']?></a></li>
+                    <li class="active"><a href="<?=$link['url']?>"><?=$link['title']?></a>
                 <?else:?>
-                    <li><a href="<?=$link['url']?>"><?=$link['title']?></a></li>
+                    <li><a href="<?=$link['url']?>"><?=$link['title']?></a>
                 <?endif?>
+                <?if(is_array($link['children'])):?>
+                    <ul class="children-menu__child">
+                    <?foreach($link['children'] as $child):?>
+                        <li><a href="<?=$child['url']?>"><?=$child['title']?></a></li>
+                    <?endforeach?>
+                    </ul>
+                <?endif;?>
+                </li>
             <?endforeach?>
         </ul>
         <div class="main__content">
