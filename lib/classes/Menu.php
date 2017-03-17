@@ -8,6 +8,9 @@ class Menu
     protected $menu;
     protected $title = '';
 
+    /**
+     * Устанавливает массив меню
+     */
     public function __construct()
     {
         $this->menu = [

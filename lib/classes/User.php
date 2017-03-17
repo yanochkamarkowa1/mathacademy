@@ -1,14 +1,10 @@
 <?
 
-class User
+/**
+ * Класс для работы с пользователями
+ */
+class User extends EntityBase
 {
-    protected $pdo;
-
-    public function __construct()
-    {
-        $this->pdo = (new DbConfig())->getConnect();
-    }
-
     /**
      * Возвращает список преподавателей
      * @return array список преподавателей

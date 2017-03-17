@@ -3,17 +3,11 @@
 /**
  * Класс для работы с задачами
  */
-class Task
+class Task extends EntityBase
 {
-    protected $pdo;
     protected $count;
     protected $page;
     protected $category;
-
-    public function __construct()
-    {
-        $this->pdo = (new DbConfig())->getConnect();
-    }
 
     /**
      * Возвращает список задач

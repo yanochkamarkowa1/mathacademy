@@ -1,2 +1,2 @@
 <?
-$menu = (new Menu())->getMenu();
+$menu = (new Menu())->getMenu(); //получаем массив меню

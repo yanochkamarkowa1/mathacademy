@@ -5,6 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/lib/vendor/recaptchalib.php');
 
 /* Подключение классов */
 require_once($_SERVER['DOCUMENT_ROOT'] . '/lib/classes/DbConfig.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/lib/classes/EntityBase.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/lib/classes/News.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/lib/classes/Menu.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/lib/classes/Task.php');

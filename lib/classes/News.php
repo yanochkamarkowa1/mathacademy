@@ -3,19 +3,10 @@
 /**
  * Класс для работы с новостями
  */
-class News
+class News extends EntityBase
 {
     private $count;
     private $page;
-    private $pdo;
-
-    /**
-     * Получает объект подключеия к базе данных
-     */
-    public function __construct()
-    {
-        $this->pdo = (new DbConfig())->getConnect();
-    }
 
     /**
      * Возвращает список новостей

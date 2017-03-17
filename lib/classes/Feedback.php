@@ -1,16 +1,10 @@
 <?
 
-class Feedback
+/**
+ * Класс для работы с обратной связью
+ */
+class Feedback extends EntityBase
 {
-    protected $pdo;
-    /**
-     * Получает объект подключеия к базе данных
-     */
-    public function __construct()
-    {
-        $this->pdo = (new DbConfig())->getConnect();
-    }
-
     public function addFeedback($fullName, $email, $text, $captcha)
     {
         $secret = '6LdJ8RgUAAAAAFtTCdZx7FlYdNtVQYZM1U01p_8Z'; /*TODO поменять при переносе*/
