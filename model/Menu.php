@@ -1,4 +1,5 @@
 <?
+namespace Model;
 
 /**
  * Класс для работы с меню
@@ -19,49 +20,49 @@ class Menu
                 'url' => '/',
                 'is_active' => false,
                 'alias' => [
-                    '/index.php',
-                    '/'
+                    '/',
+                    ''
                 ]
             ],
             'news' => [
                 'title'=> 'Новости',
-                'url' => '/news.php',
+                'url' => '/news/',
                 'is_active' => false,
                 'alias' => [
-                    '/news.php',
-                    '/news_detail.php'
+                    '/news/',
+                    '/news_detail/'
                 ]
             ],
-            'task' => [
+            'tasks' => [
                 'title'=> 'Задачи',
-                'url' => '/tasks.php',
+                'url' => '/tasks/',
                 'is_active' => false,
                 'alias' => [
-                    '/tasks.php'
+                    '/tasks/'
                 ]
             ],
             'play' => [
                 'title'=> 'Поиграем',
-                'url' => '/play.php',
+                'url' => '/play/',
                 'is_active' => false,
                 'alias' => [
-                    '/play.php'
+                    '/play/'
                 ]
             ],
             'teachers' => [
                 'title'=> 'Преподаватели',
-                'url' => '/teachers.php',
+                'url' => '/teachers/',
                 'is_active' => false,
                 'alias' => [
-                    '/teachers.php'
+                    '/teachers/'
                 ]
             ],
             'feedback' => [
                 'title'=> 'Обратная связь',
-                'url' => '/feedback.php',
+                'url' => '/feedback/',
                 'is_active' => false,
                 'alias' => [
-                    '/feedback.php'
+                    '/feedback/'
                 ]
             ]
         ];
@@ -74,8 +75,7 @@ class Menu
      */
     protected function setActive()
     {
-        $currentRoute = $_SERVER['SCRIPT_NAME'];
-
+        $currentRoute = $_SERVER['REDIRECT_URL'];
         foreach ($this->menu as &$link) {
             if(in_array($currentRoute, $link['alias'])) {
                 $link['is_active'] = true;
@@ -107,6 +107,16 @@ class Menu
     {
         return $this->menu;
     }
+
+    /**
+     * Возвращает заголовок
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
 }
 
 

@@ -1,4 +1,3 @@
-<? require_once($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php') ?>
 <?if($categoryName):?>
 <h3><?=$categoryName?></h3>
 <?endif;?>
@@ -16,9 +15,8 @@
             <?if($i == $pagination['current_page']):?>
                 <span class="pagination__item"><?=$i?></span>
             <?else:?>
-                <a class="pagination__item" href="tasks.php?page=<?=$i?>"><?=$i?></a>
+                <a class="pagination__item" href="tasks/?page=<?=$i?>"><?=$i?></a>
             <?endif?>
         <?endfor;?>
     </div>
 </div>
-<? require_once($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php') ?>

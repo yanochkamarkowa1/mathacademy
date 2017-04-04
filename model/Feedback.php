@@ -1,4 +1,5 @@
 <?
+namespace Model;
 
 /**
  * Класс для работы с обратной связью
@@ -11,7 +12,7 @@ class Feedback extends EntityBase
         $date = date('Y-m-d');
         $errors = [];
         $isError = false;
-        $reCaptcha = new ReCaptcha($secret);
+        $reCaptcha = new \ReCaptcha($secret);
 
         if ($captcha) {
             $response = $reCaptcha->verifyResponse(

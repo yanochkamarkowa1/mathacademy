@@ -1,4 +1,3 @@
-<? require_once($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php') ?>
 <form class="feedback-form" action="" method="post">
     <table>
         <tr>
@@ -48,4 +47,3 @@
         <!--TODO тут будет капча-->
     </table>
 </form>
-<? require_once($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php') ?>

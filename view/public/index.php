@@ -1,12 +1,11 @@
-<? require_once($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php') ?>
 <div class="about-slider">
-    <img src="/img/upload/welcome.jpg">
+    <img src="/assets/img/welcome.jpg">
 </div>
 <div class="news">
     <h4>Дела текущие</h4>
     <table>
         <?foreach($news as $item):?>
-            <tr><td><?=$item['data']?></td><td><a href="/news_detail.php?id=<?=$item['id']?>"><?=$item['name']?></a></td></tr>
+            <tr><td><?=$item['data']?></td><td><a href="/news_detail?id=<?=$item['id']?>"><?=$item['name']?></a></td></tr>
         <?endforeach;?>
     </table>
 </div>
@@ -69,7 +68,7 @@
         <div class="links-item">
             <div class="links-item__title">МАЛЫЙ МЕХМАТ МГУ</div>
             <a href="http://mmmf.msu.ru/for_schools/">
-                <img src="/img/upload/mechmat.jpg">
+                <img src="/assets/img/tgpu.png">
             </a>
         </div>
     </div>
@@ -77,7 +76,7 @@
         <div class="links-item">
             <div class="links-item__title">Math.ru</div>
             <a href="http://www.math.ru/">
-                <img src="/img/upload/math.jpg">
+                <img src="/assets/img/tgpu.png">
             </a>
         </div>
     </div>
@@ -85,7 +84,7 @@
         <div class="links-item">
             <div class="links-item__title">Математические этюды</div>
             <a href="http://www.etudes.ru/">
-                <img src="/img/upload/etudes.jpg">
+                <img src="/assets/img/tgpu.png">
             </a>
         </div>
     </div>
@@ -93,7 +92,7 @@
         <div class="links-item">
             <div class="links-item__title">Математика - онлайн</div>
             <a href="http://www.math-on-line.com">
-                <img src="/img/upload/mathonline.jpg">
+                <img src="/assets/img/tgpu.png">
             </a>
         </div>
     </div>
@@ -101,7 +100,7 @@
         <div class="links-item">
             <div class="links-item__title">ТГПУ им. Л. Н. Толстого</div>
             <a href="http://tsput.ru">
-                <img src="/img/tgpu.png">
+                <img src="/assets/img/tgpu.png">
             </a>
         </div>
     </div>
@@ -109,9 +108,8 @@
         <div class="links-item">
             <div class="links-item__title">ТГПУ им. Л. Н. Толстого</div>
             <a href="http://tsput.ru">
-                <img src="/img/tgpu.png">
+                <img src="/assets/img/tgpu.png">
             </a>
         </div>
     </div>
 </div>
-<? require_once($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php') ?>
