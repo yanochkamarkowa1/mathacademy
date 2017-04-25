@@ -26,7 +26,7 @@ class User extends EntityBase
           INNER JOIN `place_work` ON `users`.`place_work` = `place_work`.`id`
           INNER JOIN `location` ON `users`.`location` = `location`.`id`
           INNER JOIN `position` ON `users`.`position` = `position`.`id`
-        WHERE `users`.`rights` = 2";
+        WHERE `users`.`rights` = 2 ORDER BY `position`";
 
         $teachers = $this->pdo->query($query)->fetchAll();
 

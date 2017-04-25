@@ -13,16 +13,16 @@
         <a href="http://tsput.ru" target="_blank"><img src="../img/tgpu.png" class="header__logo" alt="logo"/></a>
         <div id="menu" class="ddsmoothmenu">
             <ul>
-                <li><a href="index.php">Главная</a></li>
-                <li><a href="news.php">Новости</a></li>
-                <li><a href="timetable.php">Расписание</a></li>
-                <li><a href="konkurs.php">Мероприятия</a></li>
+                <li><a href="http://fmsh.tsput.ru/index.php">Главная</a></li>
+                <li><a href="http://fmsh.tsput.ru/news.php">Новости</a></li>
+                <li><a href="http://fmsh.tsput.ru/timetable.php">Расписание</a></li>
+                <li><a href="http://fmsh.tsput.ru/konkurs.php">Мероприятия</a></li>
                 <li><a href="">О школе</a>
                     <ul>
-                        <li><a href="contact.php">Контакты</a></li>
-                        <li><a href="teacher.php">Преподаватели</a></li>
-                        <li><a href="pupil.php">Контингент</a></li>
-                        <li><a href="contact_us.php">Связаться с нами</a></li>
+                        <li><a href="http://fmsh.tsput.ru/contact.php">Контакты</a></li>
+                        <li><a href="http://fmsh.tsput.ru/teacher.php">Преподаватели</a></li>
+                        <li><a href="http://fmsh.tsput.ru/pupil.php">Контингент</a></li>
+                        <li><a href="http://fmsh.tsput.ru/contact_us.php">Связаться с нами</a></li>
                     </ul>
                 </li>
             </ul>

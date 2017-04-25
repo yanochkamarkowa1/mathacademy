@@ -99,17 +99,17 @@
     </div>
     <div class="links-item__container">
         <div class="links-item">
-            <div class="links-item__title">ТГПУ им. Л. Н. Толстого</div>
-            <a href="http://tsput.ru">
-                <img src="/img/tgpu.png">
+            <div class="links-item__title">Центр творческих инициатив SNAIL</div>
+            <a href="https://nic-snail.ru/">
+                <img src="/img/upload/sneil.png">
             </a>
         </div>
     </div>
     <div class="links-item__container">
         <div class="links-item">
-            <div class="links-item__title">ТГПУ им. Л. Н. Толстого</div>
-            <a href="http://tsput.ru">
-                <img src="/img/tgpu.png">
+            <div class="links-item__title">Центр дистанционного образования</div>
+            <a href="http://eidos.ru/">
+                <img src="/img/upload/eidos.png">
             </a>
         </div>
     </div>
