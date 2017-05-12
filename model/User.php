@@ -33,4 +33,12 @@ class User extends EntityBase
 
         return $teachers;
     }
+
+    public function checkLogin($login, $pass)
+    {
+        $password = $pass;
+        $query = "SELECT `users`.`login` FROM `users` WHERE `users`.`password` = '$password' AND `users`.`login` = '$login'";
+        $result = $this->pdo->query($query)->fetch();
+        return ($result) ? $result['login'] : false;
+    }
 }

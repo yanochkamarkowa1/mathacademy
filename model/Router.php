@@ -10,6 +10,7 @@ class Router
     
     public function __construct()
     {
+        session_start();
         $url = explode('/', $_GET['route']);
         $this->route = ($url[0]) ?: 'index';
     }
@@ -17,7 +18,7 @@ class Router
     public function start()
     {
         $publicController = new \Controller\PublicController($this->route);
-        $adminController = new \Controller\AdminController();
+        $adminController = new \Controller\AdminController($this->route);
 
         if($this->route == 'news'){
             $publicController->newsController();
@@ -39,7 +40,6 @@ class Router
 
         } elseif ($this->route == 'admin') {
             $adminController->indexController();
-
         } elseif ($this->route == 'index') {
             $publicController->indexController();
         } else {
