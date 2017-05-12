@@ -11,12 +11,12 @@ class Router
     public function __construct()
     {
         $url = explode('/', $_GET['route']);
-        $this->route = $url[0];
+        $this->route = ($url[0]) ?: 'index';
     }
     
     public function start()
     {
-        $publicController = new \Controller\PublicController();
+        $publicController = new \Controller\PublicController($this->route);
         $adminController = new \Controller\AdminController();
 
         if($this->route == 'news'){
@@ -40,7 +40,7 @@ class Router
         } elseif ($this->route == 'admin') {
             $adminController->indexController();
 
-        } elseif ($this->route == '') {
+        } elseif ($this->route == 'index') {
             $publicController->indexController();
         } else {
             echo 404;

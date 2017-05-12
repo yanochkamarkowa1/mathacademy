@@ -1,10 +1,3 @@
-@import "index.css";
-@import "news.css";
-@import "news_detail.css";
-@import "tasks.css";
-@import "teachers.css";
-@import "feedback.css";
-
 body {
     margin: 0;
     padding: 0;

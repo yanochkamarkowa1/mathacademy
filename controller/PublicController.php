@@ -6,6 +6,13 @@ namespace Controller;
  */
 class PublicController
 {
+    protected $route;
+
+    public function __construct($route)
+    {
+        $this->route = $route;
+    }
+
     /**
      * Отображает шаблон страницы с заполненными данными
      * @param string $name имя файла шаблона
@@ -16,6 +23,7 @@ class PublicController
         $menuObject = new \Model\Menu();
         $menu = $menuObject->getMenu();
         $title = $menuObject->getTitle();
+        $css = '/assets/css/'.$this->route.'.css';
         extract($args);
         ob_start();
         require_once($_SERVER['DOCUMENT_ROOT'] . '/view/public/' . $name . '.php');
@@ -75,10 +83,15 @@ class PublicController
         $page = $_GET['page'] ? : 1;
         $category = $_GET['category'] ? : null;
         $taskObject = new \Model\Task();
-        $tasks = $taskObject->getTasksList($page, 10, $category);
+        $tasks = $taskObject->getTasksList($page, 3, $category);
         $pagination = $taskObject->getPagination();
         $categoryName = $taskObject->getCurrentCategory();
-        $this->render('tasks', ['tasks' => $tasks, 'pagination' => $pagination, 'categoryName' => $categoryName]);
+        $this->render('tasks', [
+            'tasks' => $tasks,
+            'pagination' => $pagination,
+            'categoryName' => $categoryName,
+            'categoryId' => $category
+        ]);
     }
 
     public function teachersController()

@@ -92,9 +92,9 @@ class Menu
     {
         $category = (new Task())->getCategoryList();
         foreach ($category as $item){
-            $this->menu['task']['children'][] = [
+            $this->menu['tasks']['children'][] = [
                 'title' => $item['name_category'],
-                'url' => '/tasks.php?category='.$item['id']
+                'url' => '/tasks/?category='.$item['id']
             ];
         }
     }

@@ -45,9 +45,15 @@ class Task extends EntityBase
      */
     public function getPagination()
     {
-        $query = $this->pdo->query(
-            "SELECT COUNT(*) AS count FROM `task`"
-        );
+        if($this->category){
+            $query = $this->pdo->query(
+                "SELECT COUNT(*) AS count FROM `task` WHERE `category` = $this->category"
+            );
+        } else {
+            $query = $this->pdo->query(
+                "SELECT COUNT(*) AS count FROM `task`"
+            );
+        }
         $result = $query->fetch();
         $countNews = $result['count'];
         $countPage = ceil($countNews / $this->count);

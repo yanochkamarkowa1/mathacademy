@@ -1,5 +1,5 @@
 <div class="teachers-list">
-    <?foreach ($teachers as $teacher):?>
+    <?foreach ($args as $teacher):?>
         <div class="teachers-item">
             <div class="teachers-item__img"><img src="/upload/img/<?=$teacher['foto']?>"></div>
             <div class="teachers-item__fio"><h4><?=$teacher['surname']?> <?=$teacher['name']?> <?=$teacher['patronymic']?></h4></div>

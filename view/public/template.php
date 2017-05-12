@@ -5,6 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Академия занимательной математики | <?= $title ?></title>
     <link href='/assets/css/style.css' rel='stylesheet' type='text/css'>
+    <? if(file_exists($_SERVER['DOCUMENT_ROOT'].$css)):?>
+        <link href='<?=$css?>' rel='stylesheet' type='text/css'>
+    <? endif ?>
     <link rel="stylesheet" type="text/css" href="/assets/css/ddsmoothmenu.css"/>
 </head>
 <body>

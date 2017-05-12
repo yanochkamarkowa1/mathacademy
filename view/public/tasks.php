@@ -15,7 +15,11 @@
             <?if($i == $pagination['current_page']):?>
                 <span class="pagination__item"><?=$i?></span>
             <?else:?>
-                <a class="pagination__item" href="tasks/?page=<?=$i?>"><?=$i?></a>
+                <?if($categoryId):?>
+                    <a class="pagination__item" href="/tasks/?category=<?=$categoryId?>&page=<?=$i?>"><?=$i?></a>
+                <?else:?>
+                    <a class="pagination__item" href="/tasks/?page=<?=$i?>"><?=$i?></a>
+                <?endif;?>
             <?endif?>
         <?endfor;?>
     </div>

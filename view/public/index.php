@@ -68,7 +68,7 @@
         <div class="links-item">
             <div class="links-item__title">МАЛЫЙ МЕХМАТ МГУ</div>
             <a href="http://mmmf.msu.ru/for_schools/">
-                <img src="/assets/img/tgpu.png">
+                <img src="/upload/img/mechmat.jpg">
             </a>
         </div>
     </div>
@@ -76,7 +76,7 @@
         <div class="links-item">
             <div class="links-item__title">Math.ru</div>
             <a href="http://www.math.ru/">
-                <img src="/assets/img/tgpu.png">
+                <img src="/upload/img/math.jpg">
             </a>
         </div>
     </div>
@@ -84,7 +84,7 @@
         <div class="links-item">
             <div class="links-item__title">Математические этюды</div>
             <a href="http://www.etudes.ru/">
-                <img src="/assets/img/tgpu.png">
+                <img src="/upload/img/etudes.jpg">
             </a>
         </div>
     </div>
@@ -92,23 +92,23 @@
         <div class="links-item">
             <div class="links-item__title">Математика - онлайн</div>
             <a href="http://www.math-on-line.com">
-                <img src="/assets/img/tgpu.png">
+                <img src="/upload/img/mathonline.jpg">
             </a>
         </div>
     </div>
     <div class="links-item__container">
         <div class="links-item">
-            <div class="links-item__title">ТГПУ им. Л. Н. Толстого</div>
-            <a href="http://tsput.ru">
-                <img src="/assets/img/tgpu.png">
+            <div class="links-item__title">Центр творческих инициатив SNAIL</div>
+            <a href="https://nic-snail.ru/">
+                <img src="/upload/img/sneil.png">
             </a>
         </div>
     </div>
     <div class="links-item__container">
         <div class="links-item">
-            <div class="links-item__title">ТГПУ им. Л. Н. Толстого</div>
-            <a href="http://tsput.ru">
-                <img src="/assets/img/tgpu.png">
+            <div class="links-item__title">Центр дистанционного образования</div>
+            <a href="http://eidos.ru/">
+                <img src="/upload/img/eidos.png">
             </a>
         </div>
     </div>
