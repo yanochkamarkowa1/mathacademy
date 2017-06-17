@@ -27,7 +27,9 @@ class Task extends EntityBase
         if($this->category) {
             $query = "SELECT * FROM `task` WHERE `category` = $this->category LIMIT $limitFrom, $count";
         } else {
-            $query = "SELECT * FROM `task` LIMIT $limitFrom, $count";
+            $query = "SELECT *, task.id as id, category_task.name_category as name_category, category_task.id as category_id FROM `task` 
+              JOIN category_task ON task.category = category_task.id
+              LIMIT $limitFrom, $count";
         }
         $result = $this->pdo->query($query);
         $tasks = [];
