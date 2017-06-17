@@ -40,6 +40,25 @@ class Router
 
         } elseif ($this->route == 'admin') {
             $adminController->indexController();
+			
+		} elseif ($this->route == 'student_admin') {
+            $adminController->studentController();
+			
+		} elseif ($this->route == 'feedback_admin') {
+            $adminController->feedbackController();
+		
+		} elseif ($this->route == 'news_admin') {
+            $adminController->newsController();
+			
+		} elseif ($this->route == 'task_admin') {
+            $adminController->taskController();
+			
+		} elseif ($this->route == 'placework_admin') {
+            $adminController->place_workController();
+		
+		} elseif ($this->route == 'teacher_admin') {
+            $adminController->teacherController();
+		
         } elseif ($this->route == 'index') {
             $publicController->indexController();
         } else {

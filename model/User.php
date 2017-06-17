@@ -27,7 +27,7 @@ class User extends EntityBase
           INNER JOIN `place_work` ON `users`.`place_work` = `place_work`.`id`
           INNER JOIN `location` ON `users`.`location` = `location`.`id`
           INNER JOIN `position` ON `users`.`position` = `position`.`id`
-        WHERE `users`.`rights` = 2";
+        WHERE `users`.`rights` = 2 ORDER BY `position` ASC";
 
         $teachers = $this->pdo->query($query)->fetchAll();
 
@@ -36,9 +36,8 @@ class User extends EntityBase
 
     public function checkLogin($login, $pass)
     {
-        $password = $pass;
-        $query = "SELECT `users`.`login` FROM `users` WHERE `users`.`password` = '$password' AND `users`.`login` = '$login'";
-        $result = $this->pdo->query($query)->fetch();
+        $query = "SELECT `users`.`login` FROM `users` WHERE `users`.`password` = '" . $pass . "' AND `users`.`login` = '" . $login . "'" . " AND `users`.`rights` = '1' ";
+		$result = $this->pdo->query($query)->fetch();
         return ($result) ? $result['login'] : false;
     }
 }
