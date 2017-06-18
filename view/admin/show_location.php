@@ -1,5 +1,5 @@
 <h2>Редактирование местоположения</h2>
-<form class="location__form">
+<form class="element__form">
     <table>
         <tr>
             <td>Название</td>
@@ -17,8 +17,8 @@
             </td>
         </tr>
         <tr>
-            <td><button class="location__save" data-id="<?=$item['location']['id']?>">Сохранить</button></td>
-            <td><button class="location__delete" data-id="<?=$item['location']['id']?>">Удалить</button></td>
+            <td colspan="2"><button class="element__save" data-url="/admin/save_location/?id=<?=$item['location']['id']?>">Сохранить</button>
+            <button class="element__delete" data-url="/admin/delete_location/?id=<?=$item['location']['id']?>">Удалить</button></td>
         </tr>
     </table>
 </form>

@@ -40,4 +40,12 @@ class Location extends EntityBase
         return ($result->rowCount()) ? true : false;
     }
 
+    public function deleteLocationById($id)
+    {
+        $query = "DELETE FROM `location` WHERE `id` = $id";
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        return ($result->rowCount()) ? true : false;
+    }
 }

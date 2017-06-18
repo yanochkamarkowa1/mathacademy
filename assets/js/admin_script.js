@@ -1,7 +1,7 @@
-$('button.location').click(function () {
-   var id = $(this).data('id');
+$('button.show__popup').click(function () {
+   var url = $(this).data('url');
    $.ajax({
-       url: '/admin/show_location/?id='+id,
+       url: url,
        success: function (response) {
            $('.popup__content').html(response);
            $('.popup').show();
@@ -9,12 +9,12 @@ $('button.location').click(function () {
    });
 });
 
-$(document).on('click', 'button.location__save', function (event) {
+$(document).on('click', 'button.element__save', function (event) {
     event.preventDefault();
-    var id = $(this).data('id');
-    var data = $('.location__form').serialize();
+    var url = $(this).data('url');
+    var data = $('.element__form').serialize();
     $.ajax({
-        url: '/admin/save_location/?id='+id,
+        url: url,
         type: 'post',
         data: data,
         success: function (response) {
@@ -23,6 +23,22 @@ $(document).on('click', 'button.location__save', function (event) {
                 location.reload();
             }else{
                 alert('Произошла ошибка при сохранении');
+            }
+        }
+    });
+});
+
+$(document).on('click', 'button.element__delete', function (event) {
+    event.preventDefault();
+    var url = $(this).data('url');
+    $.ajax({
+        url: url,
+        success: function (response) {
+            if(response == 1){
+                alert('Элемент успешно удалён');
+                location.reload();
+            }else{
+                alert('Произошла ошибка при удалении');
             }
         }
     });

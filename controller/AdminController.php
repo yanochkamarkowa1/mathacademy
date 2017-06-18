@@ -17,7 +17,7 @@ class AdminController
      * @param string $name имя файла шаблона
      * @param array $args массив данных, передваваемых в шаблон
      */
-    protected function render($name, $args = [])
+    protected function render($name, $args = [], $ajax = false)
     {
         $css = '/assets/css/'.$this->route.'.css';
         extract($args);
@@ -38,7 +38,22 @@ class AdminController
         require_once($_SERVER['DOCUMENT_ROOT'] . '/view/admin/' . $name . '.php');
     }
 
+    public function redirectToLogin()
+    {
+        header( 'Location: /admin/login/');
+    }
+
+    protected function redirectToIndex()
+    {
+        header( 'Location: /admin/');
+    }
+
     public function indexController()
+    {
+        $this->render('index');
+    }
+
+    public function loginController()
     {
         if($_POST['submit']){
             $userObject = new \Model\User();
@@ -46,88 +61,59 @@ class AdminController
             $_SESSION['admin'] = $result;
         }
         if($_SESSION['admin']){
-            $this->render('index');
-        } else {
-            $this->render('login');
+            $this->redirectToIndex();
         }
+        $this->renderAjax('login');
     }
 
     public function locationController()
     {
-        if($_SESSION['admin']){
             $locationObject = new \Model\Location();
             $locationList = $locationObject->getLocationList();
             $this->render('location', ['list' => $locationList]);
-        } else {
-            $this->render('login');
-        }
     }
 
     public function newsController()
     {
-        if($_SESSION['admin']){
-            $newsObject = new \Model\News();
-            $newsList = $newsObject->getNewsList(1, PHP_INT_MAX);
-            $this->render('news', ['list' => $newsList]);
-        } else {
-            $this->render('login');
-        }
+        $newsObject = new \Model\News();
+        $newsList = $newsObject->getNewsList(1, PHP_INT_MAX);
+        $this->render('news', ['list' => $newsList]);
     }
 
     public function placeWorkController()
     {
-        if($_SESSION['admin']){
-            $placeWorkObject = new \Model\PlaceWork();
-            $placeWorkList = $placeWorkObject->getPlaceWorkList();
-            $this->render('place_work', ['list' => $placeWorkList]);
-        } else {
-            $this->render('login');
-        }
+        $placeWorkObject = new \Model\PlaceWork();
+        $placeWorkList = $placeWorkObject->getPlaceWorkList();
+        $this->render('place_work', ['list' => $placeWorkList]);
     }
 
     public function studentController()
     {
-        if($_SESSION['admin']){
-            $studentObject = new \Model\Student();
-            $studentList = $studentObject->getStudentList();
-            $this->render('student', ['list' => $studentList]);
-        } else {
-            $this->render('login');
-        }
+        $studentObject = new \Model\Student();
+        $studentList = $studentObject->getStudentList();
+        $this->render('student', ['list' => $studentList]);
     }
 
     public function taskController()
     {
-        if($_SESSION['admin']){
-            $taskObject = new \Model\Task();
-            $taskList = $taskObject->getTasksList(1, PHP_INT_MAX);
-            $this->render('task', ['list' => $taskList]);
-        } else {
-            $this->render('login');
-        }
+        $taskObject = new \Model\Task();
+        $taskList = $taskObject->getTasksList(1, PHP_INT_MAX);
+        $this->render('task', ['list' => $taskList]);
     }
 
     public function userController()
     {
-        if($_SESSION['admin']){
-            $userObject = new \Model\User();
-            $userList = $userObject->getUserList();
-            $this->render('user', ['list' => $userList]);
-        } else {
-            $this->render('login');
-        }
+        $userObject = new \Model\User();
+        $userList = $userObject->getUserList();
+        $this->render('user', ['list' => $userList]);
     }
 
     public function showLocation()
     {
         $id = $_GET['id'];
-        if($_SESSION['admin']){
-            $locationObject = new \Model\Location();
-            $location = $locationObject->getLocationById($id);
-            $this->renderAjax('show_location', ['item' => $location]);
-        } else {
-            $this->render('login');
-        }
+        $locationObject = new \Model\Location();
+        $location = $locationObject->getLocationById($id);
+        $this->renderAjax('show_location', ['item' => $location]);
     }
 
     public function saveLocation()
@@ -136,5 +122,21 @@ class AdminController
         $result = $locationObject->saveLocation($_GET['id'], $_POST['name'], $_POST['type']);
 
         echo $result;
+    }
+
+    public function deleteLocation()
+    {
+        $locationObject = new \Model\Location();
+        $result = $locationObject->deleteLocationById($_GET['id']);
+
+        echo $result;
+    }
+
+    public function showNews()
+    {
+        $id = $_GET['id'];
+        $newsObject = new \Model\News();
+        $news = $newsObject->getNewsById($id);
+        $this->renderAjax('show_news', ['item' => $news]);
     }
 }

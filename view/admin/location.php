@@ -12,7 +12,7 @@
             <td><?=$item['id']?></td>
             <td><?=$item['name']?></td>
             <td><?=$item['type']?></td>
-            <td><button class="location" data-id="<?=$item['id']?>">Изменить</button></td>
+            <td><button class="show__popup" data-url="/admin/show_location/?id=<?=$item['id']?>">Изменить</button></td>
         </tr>
     <?endforeach;?>
         <tr>

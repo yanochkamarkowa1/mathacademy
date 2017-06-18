@@ -58,7 +58,7 @@ class News extends EntityBase
     public function getNewsById($id)
     {
         $result = $this->pdo->query(
-            "SELECT `id`, `data`, `name`, `content`, `foto`  FROM `news` WHERE `id` = $id"
+            "SELECT `id`, `data`, `name`, `content`, `foto`, `description`  FROM `news` WHERE `id` = $id"
         )->fetch();
         $result['data'] = date('d.m.Y', strtotime($result['data']));
         return $result;

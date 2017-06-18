@@ -59,6 +59,10 @@ class Router
                 $adminController->showLocation();
             } elseif ($this->param == 'save_location'){
                 $adminController->saveLocation();
+            } elseif ($this->param == 'delete_location'){
+                $adminController->deleteLocation();
+            } elseif ($this->param == 'show_news'){
+                $adminController->showNews();
             }
 
         } elseif ($this->route == 'index') {
