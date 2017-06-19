@@ -32,18 +32,20 @@ $(document).on('click', 'button.element__save', function (event) {
 
 $(document).on('click', 'button.element__delete', function (event) {
     event.preventDefault();
-    var url = $(this).data('url');
-    $.ajax({
-        url: url,
-        success: function (response) {
-            if(response == 1){
-                alert('Элемент успешно удалён');
-                location.reload();
-            }else{
-                alert('Произошла ошибка при удалении');
+    if(confirm("Удалить элемент?")){
+        var url = $(this).data('url');
+        $.ajax({
+            url: url,
+            success: function (response) {
+                if(response == 1){
+                    alert('Элемент успешно удалён');
+                    location.reload();
+                }else{
+                    alert('Произошла ошибка при удалении');
+                }
             }
-        }
-    });
+        });
+    }
 });
 
 $('.popup__close').click(function () {

@@ -91,6 +91,9 @@ body{
 .table table{
     width: 100%;
 }
+.table img{
+    width: 200px;
+}
 .table table td{
     padding-left: 10px;
 }
@@ -135,6 +138,11 @@ body{
 }
 .popup__content img{
     width: 200px;
+    padding-bottom: 10px;
+}
+.popup__content a{
+    margin-top: 10px;
+    display: block;
 }
 .popup__close{
     text-align: center;

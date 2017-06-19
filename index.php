@@ -2,8 +2,8 @@
 /* Подключение сторонних библиотек не на классах*/
 require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/phpmathpublisher/mathpublisher.php');
 
-ini_set('display_errors',1);
-error_reporting(E_ALL);
+//ini_set('display_errors',1);
+//error_reporting(E_ALL);
 /**
  * Функция, позволяющая подключать только вызываемые в коде классы<br><br>
  * Например, при вызове:<br>

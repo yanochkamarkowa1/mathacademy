@@ -17,16 +17,17 @@ class User extends EntityBase
           `users`.`surname`,
           `users`.`patronymic`,
           `users`.`email`,
-          `users`.`foto`,
           `privilege`.`name` as `rights`,
           `place_work`.`name` as `place_work`,
           `location`.`name` as `location`,
-          `position`.`name` as `position`
+          `position`.`name` as `position`,
+          `images`.`filename` as `foto`
         FROM `users`
-          INNER JOIN `privilege` ON `users`.`rights` = `privilege`.`id`
-          INNER JOIN `place_work` ON `users`.`place_work` = `place_work`.`id`
-          INNER JOIN `location` ON `users`.`location` = `location`.`id`
-          INNER JOIN `position` ON `users`.`position` = `position`.`id`
+          LEFT JOIN `privilege` ON `users`.`rights` = `privilege`.`id`
+          LEFT JOIN `place_work` ON `users`.`place_work` = `place_work`.`id`
+          LEFT JOIN `location` ON `users`.`location` = `location`.`id`
+          LEFT JOIN `position` ON `users`.`position` = `position`.`id`
+          LEFT JOIN `images` ON `users`.`foto` = `images`.`name`
         WHERE `users`.`rights` = 2";
 
         $teachers = $this->pdo->query($query)->fetchAll();
@@ -42,16 +43,17 @@ class User extends EntityBase
           `users`.`surname`,
           `users`.`patronymic`,
           `users`.`email`,
-          `users`.`foto`,
           `privilege`.`name` as `rights`,
           `place_work`.`name` as `place_work`,
           `location`.`name` as `location`,
-          `position`.`name` as `position`
+          `position`.`name` as `position`,
+          `images`.`filename` as `foto`
         FROM `users`
-          INNER JOIN `privilege` ON `users`.`rights` = `privilege`.`id`
-          INNER JOIN `place_work` ON `users`.`place_work` = `place_work`.`id`
-          INNER JOIN `location` ON `users`.`location` = `location`.`id`
-          INNER JOIN `position` ON `users`.`position` = `position`.`id`";
+          LEFT JOIN `privilege` ON `users`.`rights` = `privilege`.`id`
+          LEFT JOIN `place_work` ON `users`.`place_work` = `place_work`.`id`
+          LEFT JOIN `location` ON `users`.`location` = `location`.`id`
+          LEFT JOIN `position` ON `users`.`position` = `position`.`id`
+          LEFT JOIN `images` ON `users`.`foto` = `images`.`name`";
 
         $users = $this->pdo->query($query)->fetchAll();
 

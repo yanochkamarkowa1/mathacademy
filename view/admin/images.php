@@ -1,18 +1,18 @@
 <div class="table">
-    <h1>Таблица новостей</h1>
+    <h1>Таблица изображений</h1>
     <table>
         <tr>
-            <td>ID</td>
-            <td>Дата</td>
-            <td>Название</td>
+            <td>Имя</td>
+            <td>Имя файла</td>
+            <td>Изображение</td>
             <td>Редактирование</td>
         </tr>
         <?foreach ($list as $item):?>
             <tr>
-                <td><?=$item['id']?></td>
-                <td><?=$item['data']?></td>
                 <td><?=$item['name']?></td>
-                <td><button class="show__popup" data-url="/admin/show_news/?id=<?=$item['id']?>">Изменить</button></td>
+                <td><?=$item['filename']?></td>
+                <td><img src="/upload/img/<?=$item['filename']?>"</td>
+                <td><button class="show__popup" data-url="/admin/show_image/?id=<?=$item['id']?>">Изменить</button></td>
             </tr>
         <?endforeach;?>
         <tr>

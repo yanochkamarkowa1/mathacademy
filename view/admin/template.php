@@ -16,6 +16,7 @@
             <li><a href="/admin/student/">Учащиеся</a></li>
             <li><a href="/admin/task/">Задачи</a></li>
             <li><a href="/admin/user/">Пользователи</a></li>
+            <li><a href="/admin/images/">Изображения</a></li>
         </ul>
     </div>
     <?= $content ?>

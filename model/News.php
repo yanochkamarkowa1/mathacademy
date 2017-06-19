@@ -22,14 +22,20 @@ class News extends EntityBase
 
         $limitFrom = $count * ($page - 1);
         $result = $this->pdo->query(
-            "SELECT `id`, `data`, `name`, `description`, `foto` FROM `news` ORDER BY `data` DESC LIMIT $limitFrom, $count"
+            "SELECT `id`, `data`, `news`.`name` as name, `description`, `images`.`filename` as foto
+                FROM `news` 
+                LEFT JOIN `images` ON `news`.`foto` = `images`.`name` ORDER BY `data` DESC LIMIT $limitFrom, $count"
         );
         $news = [];
         while ($item = $result->fetch()) {
             $item['data'] = date('d.m.Y', strtotime($item['data']));
             $news[] = $item;
         }
-        return $news;
+        $images = $this->pdo->query("SELECT * FROM `images`")->fetchAll();
+        return [
+            'news' => $news,
+            'images' => $images
+        ];
     }
 
     /**
@@ -57,11 +63,18 @@ class News extends EntityBase
      */
     public function getNewsById($id)
     {
-        $result = $this->pdo->query(
-            "SELECT `id`, `data`, `name`, `content`, `foto`, `description`  FROM `news` WHERE `id` = $id"
+        $news = $this->pdo->query(
+            "SELECT `id`, `data`, `news`.`name` as name, `content`, `description`, `images`.`filename` as foto, `images`.`name` as foto_name
+                FROM `news` 
+                LEFT JOIN `images` ON `news`.`foto` = `images`.`name`
+                WHERE `id` = $id"
         )->fetch();
-        $result['data'] = date('d.m.Y', strtotime($result['data']));
-        return $result;
+        $news['data'] = date('d.m.Y', strtotime($news['data']));
+        $images = (new \Model\Images())->getImageList();
+        return [
+            'news' => $news,
+            'images' => $images
+        ];
     }
 
     public function saveNews($id, $data, $name, $description, $content, $foto)

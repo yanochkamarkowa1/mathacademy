@@ -9,8 +9,8 @@ class Student extends EntityBase
         $result = $this->pdo->query(
             "SELECT student.id, surname, student.name, patronymic, place_work.name as place_work, classes.name as classes
               FROM student
-              INNER JOIN place_work ON student.pleace_work = place_work.id
-              INNER JOIN classes ON student.classes = classes.id"
+              LEFT JOIN place_work ON student.pleace_work = place_work.id
+              LEFT JOIN classes ON student.classes = classes.id"
         );
 
         return $result->fetchAll();
@@ -24,9 +24,9 @@ class Student extends EntityBase
               location.name as location, place_work.id as place_work_id,
               location.id as location_id, classes.id as classes_id
               FROM student
-              INNER JOIN place_work ON student.pleace_work = place_work.id
-              INNER JOIN classes ON student.classes = classes.id
-              INNER JOIN location ON student.location = location.id
+              LEFT JOIN place_work ON student.pleace_work = place_work.id
+              LEFT JOIN classes ON student.classes = classes.id
+              LEFT JOIN location ON student.location = location.id
               WHERE student.id = '$id'"
         )->fetch();
 

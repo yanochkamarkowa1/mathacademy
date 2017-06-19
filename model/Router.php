@@ -56,6 +56,8 @@ class Router
                     $adminController->taskController();
                 } elseif ($this->param == 'user') {
                     $adminController->userController();
+                } elseif ($this->param == 'images') {
+                    $adminController->imagesController();
                 } elseif ($this->param == 'show_location') {
                     $adminController->showLocation();
                 } elseif ($this->param == 'save_location') {

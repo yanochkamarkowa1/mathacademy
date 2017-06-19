@@ -32,7 +32,7 @@ class AdminController
         require_once($_SERVER['DOCUMENT_ROOT'] . '/view/admin/template.php');
     }
 
-    protected function uploadFoto($file, $oldFoto)
+    protected function uploadFoto($file)
     {
         $ext = pathinfo($file['foto']['name'])['extension'];
         if(!in_array($ext, $this->availableExt)) {
@@ -40,9 +40,6 @@ class AdminController
         }
         $newFileName = uniqid() . '.' . $ext;
         move_uploaded_file($file['foto']['tmp_name'], $this->uploadDir.$newFileName);
-        if(file_exists($this->uploadDir.$oldFoto)){
-            unlink($this->uploadDir.$oldFoto);
-        }
         return $newFileName;
     }
 
@@ -95,7 +92,7 @@ class AdminController
     public function newsController()
     {
         $newsObject = new \Model\News();
-        $newsList = $newsObject->getNewsList(1, PHP_INT_MAX);
+        $newsList = $newsObject->getNewsList(1, PHP_INT_MAX)['news'];
         $this->render('news', ['list' => $newsList]);
     }
 
@@ -163,23 +160,13 @@ class AdminController
     {
         $id = $_GET['id'];
         $newsObject = new \Model\News();
-
-        $foto = $_POST['oldFoto'];
-        if($_FILES['foto']['error'] == 0){
-            $result = $this->uploadFoto($_FILES, $foto);
-            if($result == false) {
-                echo false;
-                return;
-            }
-            $foto = $result;
-        }
         $result = $newsObject->saveNews(
             $id,
             $_POST['data'],
             $_POST['name'],
             $_POST['description'],
             $_POST['content'],
-            $foto
+            $_POST['foto']
         );
         echo $result;
     }
@@ -244,5 +231,13 @@ class AdminController
         $result = $studentObject->deleteStudentById($_GET['id']);
 
         echo $result;
+    }
+
+    public function imagesController()
+    {
+        $imagesObject = new \Model\Images();
+        $result = $imagesObject->getImageList();
+
+        $this->render('images', ['list' => $result]);
     }
 }
