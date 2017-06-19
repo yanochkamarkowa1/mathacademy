@@ -12,11 +12,13 @@ $('button.show__popup').click(function () {
 $(document).on('click', 'button.element__save', function (event) {
     event.preventDefault();
     var url = $(this).data('url');
-    var data = $('.element__form').serialize();
+    var data =  new FormData($('.element__form').get(0));
     $.ajax({
         url: url,
         type: 'post',
         data: data,
+        contentType: false,
+        processData: false,
         success: function (response) {
             if(response == 1){
                 alert('Элемент успешно обновлён');

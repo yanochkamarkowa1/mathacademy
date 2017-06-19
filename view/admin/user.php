@@ -20,7 +20,7 @@
                 <td><?=$item['rights']?></td>
                 <td><?=$item['place_work']?></td>
                 <td><?=$item['position']?></td>
-                <td><button class="location" data-id="<?=$item['id']?>">Изменить</button></td>
+                <td><button class="location" data-id="<?=$item['login']?>">Изменить</button></td>
             </tr>
         <?endforeach;?>
         <tr>

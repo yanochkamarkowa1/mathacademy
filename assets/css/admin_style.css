@@ -4,10 +4,10 @@
     border-bottom: 1px solid gainsboro;
 }
 .footer{
-     height: 50px;
-    margin-top: -50px;
-     width: 100%;
-     border-top: 1px solid gainsboro;
+    height: 50px;
+    margin-top: -51px;
+    width: 100%;
+    border-top: 1px solid gainsboro;
     position: relative;
     z-index: 100;
     background: white;

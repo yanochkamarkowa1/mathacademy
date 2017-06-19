@@ -3,7 +3,7 @@
     <table>
         <tr>
             <td>Дата</td>
-            <td><input type="text" name="date" value="<?=$item['data']?>"></td>
+            <td><input type="text" name="data" value="<?=$item['data']?>"></td>
         </tr>
         <tr>
             <td>Название</td>
@@ -11,7 +11,15 @@
         </tr>
         <tr>
             <td>Фото</td>
-            <td><img src="/upload/img/<?=$item['foto']?>"></td>
+            <td>
+                <?if(file_exists($_SERVER['DOCUMENT_ROOT']. '/upload/img/'.$item['foto'])):?>
+                <img src="/upload/img/<?=$item['foto']?>">
+                <?else:?>
+                    Нет фото
+                <?endif;?>
+                <input type="hidden" name="oldFoto" value="<?=$item['foto']?>">
+                <input type="file" name="foto">
+            </td>
         </tr>
         <tr>
             <td>Описание</td>
@@ -22,8 +30,8 @@
             <td><textarea type="text" name="content"><?=$item['content']?></textarea></td>
         </tr>
         <tr>
-            <td colspan="2"><button class="element__save" data-url="/admin/save_location/?id=<?=$item['id']?>">Сохранить</button>
-            <button class="element__delete" data-url="/admin/delete_location/?id=<?=$item['id']?>">Удалить</button></td>
+            <td colspan="2"><button class="element__save" data-url="/admin/save_news/?id=<?=$item['id']?>">Сохранить</button>
+            <button class="element__delete" data-url="/admin/delete_news/?id=<?=$item['id']?>">Удалить</button></td>
         </tr>
     </table>
 </form>

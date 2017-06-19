@@ -7,17 +7,22 @@ namespace Controller;
 class AdminController
 {
     protected $route;
+    protected $uploadDir;
+    protected $availableExt = [
+        'png', 'jpeg', 'bmp', 'gif', 'jpg'
+    ];
 
     public function __construct($route)
     {
         $this->route = $route;
+        $this->uploadDir = $_SERVER['DOCUMENT_ROOT'].'/upload/img/';
     }
     /**
      * Отображает шаблон страницы с заполненными данными
      * @param string $name имя файла шаблона
      * @param array $args массив данных, передваваемых в шаблон
      */
-    protected function render($name, $args = [], $ajax = false)
+    protected function render($name, $args = [])
     {
         $css = '/assets/css/'.$this->route.'.css';
         extract($args);
@@ -25,6 +30,20 @@ class AdminController
         require_once($_SERVER['DOCUMENT_ROOT'] . '/view/admin/' . $name . '.php');
         $content = ob_get_clean();
         require_once($_SERVER['DOCUMENT_ROOT'] . '/view/admin/template.php');
+    }
+
+    protected function uploadFoto($file, $oldFoto)
+    {
+        $ext = pathinfo($file['foto']['name'])['extension'];
+        if(!in_array($ext, $this->availableExt)) {
+            return false;
+        }
+        $newFileName = uniqid() . '.' . $ext;
+        move_uploaded_file($file['foto']['tmp_name'], $this->uploadDir.$newFileName);
+        if(file_exists($this->uploadDir.$oldFoto)){
+            unlink($this->uploadDir.$oldFoto);
+        }
+        return $newFileName;
     }
 
     /**
@@ -138,5 +157,92 @@ class AdminController
         $newsObject = new \Model\News();
         $news = $newsObject->getNewsById($id);
         $this->renderAjax('show_news', ['item' => $news]);
+    }
+
+    public function saveNews()
+    {
+        $id = $_GET['id'];
+        $newsObject = new \Model\News();
+
+        $foto = $_POST['oldFoto'];
+        if($_FILES['foto']['error'] == 0){
+            $result = $this->uploadFoto($_FILES, $foto);
+            if($result == false) {
+                echo false;
+                return;
+            }
+            $foto = $result;
+        }
+        $result = $newsObject->saveNews(
+            $id,
+            $_POST['data'],
+            $_POST['name'],
+            $_POST['description'],
+            $_POST['content'],
+            $foto
+        );
+        echo $result;
+    }
+
+    public function deleteNews()
+    {
+        $newsObject = new \Model\News();
+        $result = $newsObject->deleteNewsById($_GET['id']);
+
+        echo $result;
+    }
+
+    public function showPlaceWork()
+    {
+        $id = $_GET['id'];
+        $placeWorkObject = new \Model\PlaceWork();
+        $placeWork = $placeWorkObject->getPlaceWorkById($id);
+        $this->renderAjax('show_place_work', ['item' => $placeWork]);
+    }
+
+    public function savePlaceWork()
+    {
+        $placeWorkObject = new \Model\PlaceWork();
+        $result = $placeWorkObject->savePlaceWork($_GET['id'], $_POST['name'], $_POST['email'], $_POST['address']);
+
+        echo $result;
+    }
+
+    public function deletePlaceWork()
+    {
+        $newsObject = new \Model\PlaceWork();
+        $result = $newsObject->deletePlaceWorkById($_GET['id']);
+
+        echo $result;
+    }
+
+    public function showStudent()
+    {
+        $studentObject = new \Model\Student();
+        $student = $studentObject->getStudentById($_GET['id']);
+        $this->renderAjax('show_student', ['item' => $student]);
+    }
+
+    public function saveStudent()
+    {
+        $studentObject = new \Model\Student();
+        $result = $studentObject->saveStudent(
+            $_GET['id'],
+            $_POST['name'],
+            $_POST['surname'],
+            $_POST['patronymic'],
+            $_POST['place_work'],
+            $_POST['classes'],
+            $_POST['location']);
+
+        echo $result;
+    }
+
+    public function deleteStudent()
+    {
+        $studentObject = new \Model\Student();
+        $result = $studentObject->deleteStudentById($_GET['id']);
+
+        echo $result;
     }
 }

@@ -14,7 +14,7 @@
             <td><?=$item['name']?></td>
             <td><?=$item['email']?></td>
             <td><?=$item['address']?></td>
-            <td><button class="location" data-id="<?=$item['id']?>">Изменить</button></td>
+            <td><button class="show__popup" data-url="/admin/show_place_work/?id=<?=$item['id']?>">Изменить</button></td>
         </tr>
     <?endforeach;?>
         <tr>

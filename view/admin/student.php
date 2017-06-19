@@ -18,7 +18,7 @@
                 <td><?=$item['patronymic']?></td>
                 <td><?=$item['place_work']?></td>
                 <td><?=$item['classes']?></td>
-                <td><button class="location" data-id="<?=$item['id']?>">Изменить</button></td>
+                <td><button class="show__popup" data-url="/admin/show_student/?id=<?=$item['id']?>">Изменить</button></td>
             </tr>
         <?endforeach;?>
         <tr>

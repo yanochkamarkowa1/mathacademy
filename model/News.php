@@ -64,4 +64,23 @@ class News extends EntityBase
         return $result;
     }
 
+    public function saveNews($id, $data, $name, $description, $content, $foto)
+    {
+        $data = date("Y-m-d", strtotime($data));
+        $query = "UPDATE `news` SET `data` = '$data', `name` = '$name', `description` = '$description', `content` = '$content', `foto` = '$foto' WHERE `id` = '$id'";
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        return ($result->rowCount()) ? true : false;
+    }
+
+    public function deleteNewsById($id)
+    {
+        $query = "DELETE FROM `news` WHERE `id` = $id";
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        return ($result->rowCount()) ? true : false;
+    }
+
 }
