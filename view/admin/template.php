@@ -7,21 +7,30 @@
         <link href='<?=$css?>' rel='stylesheet' type='text/css'>
     <? endif ?>
 </head>
+<div class="sidebar">
+    <ul>
+        <li><a href="/admin/">Главная</a></li>
+        <li><a href="/">Вернуться на сайт</a></li>
+    </ul>
+    <ul>
+        <li><a href="/admin/location/">Местоположения</a></li>
+        <li><a href="/admin/news/">Новости</a></li>
+        <li><a href="/admin/place_work/">Места работы</a></li>
+        <li><a href="/admin/student/">Учащиеся</a></li>
+        <li><a href="/admin/task/">Задачи</a></li>
+        <li><a href="/admin/user/">Пользователи</a></li>
+        <li><a href="/admin/images/">Изображения</a></li>
+    </ul>
+    <ul>
+        <li><a href="/admin/feedback/">Обратная связь</a></li>
+        <li><a href="/admin/associate/">Связанные сущности</a></li>
+    </ul>
+</div>
 <main class="main">
-    <div class="sidebar">
-        <ul>
-            <li><a href="/admin/location/">Местоположения</a></li>
-            <li><a href="/admin/news/">Новости</a></li>
-            <li><a href="/admin/place_work/">Места работы</a></li>
-            <li><a href="/admin/student/">Учащиеся</a></li>
-            <li><a href="/admin/task/">Задачи</a></li>
-            <li><a href="/admin/user/">Пользователи</a></li>
-            <li><a href="/admin/images/">Изображения</a></li>
-        </ul>
-    </div>
+    <header class="header">Вы зашли под логином <?=$_SESSION['admin']?>. <a href="/admin/logout/">Выйти</a></header>
     <?= $content ?>
 </main>
-<footer class="footer">Футер</footer>
+<footer class="footer">Академия занимательной математики. <?=date('Y')?></footer>
 <div class="popup">
     <div class="popup__content"></div>
     <div class="popup__close">x</div>

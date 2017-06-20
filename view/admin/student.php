@@ -23,7 +23,7 @@
         <?endforeach;?>
         <tr>
             <td colspan="6"></td>
-            <td><button>Добавить</button></td>
+            <td><button class="show__popup" data-url="/admin/show_student/">Добавить</button></td>
         </tr>
     </table>
 </div>

@@ -12,14 +12,14 @@
                 <td><?=$item['name']?></td>
                 <td><?=$item['filename']?></td>
                 <td><img src="/upload/img/<?=$item['filename']?>"</td>
-                <td><button class="show__popup" data-url="/admin/show_image/?id=<?=$item['id']?>">Изменить</button></td>
+                <td><button class="element__delete" data-url="/admin/delete_image/?name=<?=$item['name']?>">Удалить</button></td>
             </tr>
         <?endforeach;?>
         <tr>
             <td></td>
             <td></td>
             <td></td>
-            <td><button>Добавить</button></td>
+            <td><button class="show__popup" data-url="/admin/show_image/">Добавить</button></td>
         </tr>
     </table>
 </div>

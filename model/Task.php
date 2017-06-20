@@ -31,14 +31,8 @@ class Task extends EntityBase
               JOIN category_task ON task.category = category_task.id
               LIMIT $limitFrom, $count";
         }
-        $result = $this->pdo->query($query);
-        $tasks = [];
-        while($task = $result->fetch()){
-            $task['content'] = mathfilter($task['content'], 12, '/cache/img/');
-            $task['solution'] = mathfilter($task['solution'], 12, '/cache/img/');
-            $tasks[] = $task;
-        }
-        return $tasks;
+        $result = $this->pdo->query($query)->fetchAll();
+        return $result;
     }
 
     /**
@@ -89,5 +83,42 @@ class Task extends EntityBase
         } else {
             return false;
         }
+    }
+
+    public function getTaskById($id)
+    {
+        $task = $this->pdo->query("SELECT `task`.`id`, `task`.`name` as name, `content`, `solution`, `category_task`.`name_category` as category, `category_task`.`id` as category_id
+          FROM `task`
+          LEFT JOIN `category_task` ON `task`.`category` = `category_task`.`id`
+          WHERE `task`.`id` = '$id'")->fetch();
+
+        return $task;
+    }
+
+    public function saveTask($id, $name, $category, $content, $solution)
+    {
+        $query = "UPDATE `task` SET `name` = '$name', `category` = '$category', `content` = '$content', `solution` = '$solution' WHERE `id` = '$id'";
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        return ($result->rowCount()) ? true : false;
+    }
+
+    public function addTask($name, $category, $content, $solution)
+    {
+        $query = "INSERT INTO `task` (`name`, `category`, `content`, `solution`) VALUES ('$name', '$category', '$content', '$solution')";
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        return ($result->rowCount()) ? true : false;
+    }
+    
+    public function deleteTaskById($id)
+    {
+        $query = "DELETE FROM `task` WHERE `id` = '$id'";
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        return ($result->rowCount()) ? true : false;
     }
 }

@@ -23,12 +23,14 @@ class Location extends EntityBase
               LEFT JOIN `type` ON location.type = type.id WHERE location.id = $id"
         )->fetch();
 
+        return $location;
+    }
+
+    public function getTypeList()
+    {
         $types = $this->pdo->query("SELECT * FROM type")->fetchAll();
 
-        return [
-            'location' => $location,
-            'types' => $types
-        ];
+        return $types;
     }
 
     public function saveLocation($id, $name, $type)
@@ -43,6 +45,15 @@ class Location extends EntityBase
     public function deleteLocationById($id)
     {
         $query = "DELETE FROM `location` WHERE `id` = $id";
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        return ($result->rowCount()) ? true : false;
+    }
+
+    public function addLocation($name, $type)
+    {
+        $query = "INSERT INTO `location` (`name`, `type`) VALUES ('$name', '$type')";
         $result = $this->pdo->prepare($query);
         $result->execute();
 

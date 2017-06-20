@@ -19,7 +19,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><button>Добавить</button></td>
+            <td><button class="show__popup" data-url="/admin/show_location/"?>Добавить</button></td>
         </tr>
     </table>
 </div>

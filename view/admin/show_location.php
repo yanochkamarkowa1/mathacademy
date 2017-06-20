@@ -17,8 +17,14 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2"><button class="element__save" data-url="/admin/save_location/?id=<?=$item['location']['id']?>">Сохранить</button>
-            <button class="element__delete" data-url="/admin/delete_location/?id=<?=$item['location']['id']?>">Удалить</button></td>
+            <td colspan="2">
+                <?if(isset($item['location']['id'])):?>
+                <button class="element__save" data-url="/admin/save_location/?id=<?=$item['location']['id']?>">Сохранить</button>
+                <button class="element__delete" data-url="/admin/delete_location/?id=<?=$item['location']['id']?>">Удалить</button>
+                <?else:?>
+                    <button class="element__save" data-url="/admin/add_location/">Добавить</button>
+                <?endif;?>
+            </td>
         </tr>
     </table>
 </form>

@@ -82,6 +82,12 @@ class AdminController
         $this->renderAjax('login');
     }
 
+    public function logoutController()
+    {
+        unset($_SESSION['admin']);
+        $this->redirectToLogin();
+    }
+
     public function locationController()
     {
             $locationObject = new \Model\Location();
@@ -92,7 +98,7 @@ class AdminController
     public function newsController()
     {
         $newsObject = new \Model\News();
-        $newsList = $newsObject->getNewsList(1, PHP_INT_MAX)['news'];
+        $newsList = $newsObject->getNewsList(1, PHP_INT_MAX);
         $this->render('news', ['list' => $newsList]);
     }
 
@@ -124,18 +130,38 @@ class AdminController
         $this->render('user', ['list' => $userList]);
     }
 
+    public function imagesController()
+    {
+        $imagesObject = new \Model\Images();
+        $result = $imagesObject->getImageList();
+
+        $this->render('images', ['list' => $result]);
+    }
+
     public function showLocation()
     {
         $id = $_GET['id'];
         $locationObject = new \Model\Location();
-        $location = $locationObject->getLocationById($id);
-        $this->renderAjax('show_location', ['item' => $location]);
+        $location = [];
+        if(isset($id)){
+            $location = $locationObject->getLocationById($id);
+        }
+        $types = $locationObject->getTypeList();
+        $this->renderAjax('show_location', ['item' => ['location' => $location, 'types' => $types]]);
     }
 
     public function saveLocation()
     {
         $locationObject = new \Model\Location();
         $result = $locationObject->saveLocation($_GET['id'], $_POST['name'], $_POST['type']);
+
+        echo $result;
+    }
+
+    public function addLocation()
+    {
+        $locationObject = new \Model\Location();
+        $result = $locationObject->addLocation($_POST['name'], $_POST['type']);
 
         echo $result;
     }
@@ -151,9 +177,14 @@ class AdminController
     public function showNews()
     {
         $id = $_GET['id'];
-        $newsObject = new \Model\News();
-        $news = $newsObject->getNewsById($id);
-        $this->renderAjax('show_news', ['item' => $news]);
+        $news = [];
+        if(isset($id)){
+            $newsObject = new \Model\News();
+            $news = $newsObject->getNewsById($id);
+        }
+        $imageObject = new \Model\Images();
+        $images = $imageObject->getImageList();
+        $this->renderAjax('show_news', ['item' => ['news' => $news, 'images' => $images]]);
     }
 
     public function saveNews()
@@ -162,6 +193,19 @@ class AdminController
         $newsObject = new \Model\News();
         $result = $newsObject->saveNews(
             $id,
+            $_POST['data'],
+            $_POST['name'],
+            $_POST['description'],
+            $_POST['content'],
+            $_POST['foto']
+        );
+        echo $result;
+    }
+
+    public function addNews()
+    {
+        $newsObject = new \Model\News();
+        $result = $newsObject->addNews(
             $_POST['data'],
             $_POST['name'],
             $_POST['description'],
@@ -182,8 +226,11 @@ class AdminController
     public function showPlaceWork()
     {
         $id = $_GET['id'];
-        $placeWorkObject = new \Model\PlaceWork();
-        $placeWork = $placeWorkObject->getPlaceWorkById($id);
+        $placeWork = [];
+        if(isset($id)){
+            $placeWorkObject = new \Model\PlaceWork();
+            $placeWork = $placeWorkObject->getPlaceWorkById($id);
+        }
         $this->renderAjax('show_place_work', ['item' => $placeWork]);
     }
 
@@ -191,6 +238,14 @@ class AdminController
     {
         $placeWorkObject = new \Model\PlaceWork();
         $result = $placeWorkObject->savePlaceWork($_GET['id'], $_POST['name'], $_POST['email'], $_POST['address']);
+
+        echo $result;
+    }
+
+    public function addPlaceWork()
+    {
+        $placeWorkObject = new \Model\PlaceWork();
+        $result = $placeWorkObject->addPlaceWork($_POST['name'], $_POST['email'], $_POST['address']);
 
         echo $result;
     }
@@ -205,9 +260,22 @@ class AdminController
 
     public function showStudent()
     {
+        $id = $_GET['id'];
         $studentObject = new \Model\Student();
-        $student = $studentObject->getStudentById($_GET['id']);
-        $this->renderAjax('show_student', ['item' => $student]);
+        $student = [];
+        if(isset($id)){
+            $student = $studentObject->getStudentById($id);
+        }
+        $classes = $studentObject->getClassesList();
+        $placeWork = (new \Model\PlaceWork())->getPlaceWorkList();
+        $location = (new \Model\Location())->getLocationList();
+
+        $this->renderAjax('show_student', ['item' => [
+            'student' => $student,
+            'place_work' => $placeWork,
+            'location' => $location,
+            'classes' => $classes
+        ]]);
     }
 
     public function saveStudent()
@@ -215,6 +283,20 @@ class AdminController
         $studentObject = new \Model\Student();
         $result = $studentObject->saveStudent(
             $_GET['id'],
+            $_POST['name'],
+            $_POST['surname'],
+            $_POST['patronymic'],
+            $_POST['place_work'],
+            $_POST['classes'],
+            $_POST['location']);
+
+        echo $result;
+    }
+
+    public function addStudent()
+    {
+        $studentObject = new \Model\Student();
+        $result = $studentObject->addStudent(
             $_POST['name'],
             $_POST['surname'],
             $_POST['patronymic'],
@@ -233,11 +315,191 @@ class AdminController
         echo $result;
     }
 
-    public function imagesController()
+    public function showImage()
     {
-        $imagesObject = new \Model\Images();
-        $result = $imagesObject->getImageList();
+        $this->renderAjax('show_image');
+    }
 
-        $this->render('images', ['list' => $result]);
+    public function addImage()
+    {
+        $imageObject = new \Model\Images();
+
+        if($_FILES['foto']['error'] != 0){
+            echo false;
+            return;
+        }
+        $result = $this->uploadFoto($_FILES);
+        if($result == false) {
+            echo false;
+            return;
+        }
+        $foto = $result;
+        $imageObject->addImage($_POST['name'], $foto);
+
+        echo true;
+    }
+
+    public function deleteImage()
+    {
+        $name = $_GET['name'];
+        $imagesObject = new \Model\Images();
+        $result = $imagesObject->deleteImageByName($name);
+
+        echo $result;
+    }
+
+    public function showTask()
+    {
+        $id = $_GET['id'];
+        $taskObject = new \Model\Task();
+        $task = [];
+        if(isset($id)){
+            $task = $taskObject->getTaskById($id);
+        }
+        $categories = $taskObject->getCategoryList();
+        $this->renderAjax('show_task', ['item' => [
+            'task' => $task,
+            'categories' => $categories
+        ]]);
+    }
+
+    public function saveTask()
+    {
+        $taskObject = new \Model\Task();
+        $result = $taskObject->saveTask(
+            $_GET['id'],
+            $_POST['name'],
+            $_POST['category'],
+            $_POST['content'],
+            $_POST['solution']
+        );
+
+        echo $result;
+    }
+
+    public function addTask()
+    {
+        $taskObject = new \Model\Task();
+        $result = $taskObject->addTask(
+            $_POST['name'],
+            $_POST['category'],
+            $_POST['content'],
+            $_POST['solution']
+        );
+
+        echo $result;
+    }
+
+    public function deleteTask()
+    {
+        $taskObject = new \Model\Task();
+        $result = $taskObject->deleteTaskById($_GET['id']);
+
+        echo $result;
+    }
+
+    public function showUser()
+    {
+        $login = $_GET['login'];
+        $userObject = new \Model\User();
+        $user = [];
+        if(isset($login)){
+            $user = $userObject->getUserByLogin($login);
+        }
+        $privilege = $userObject->getPrivilegeList();
+        $position = $userObject->getPositionList();
+        $placeWork = (new \Model\PlaceWork())->getPlaceWorkList();
+        $location = (new \Model\Location())->getLocationList();
+        $images = (new \Model\Images())->getImageList();
+        $this->renderAjax('show_user', ['item' => [
+            'user' => $user,
+            'privilege' => $privilege,
+            'place_work' => $placeWork,
+            'location' => $location,
+            'position' => $position,
+            'images' => $images
+        ]]);
+    }
+
+    public function saveUser()
+    {
+        $userObject = new \Model\User();
+        $result = $userObject->saveUser(
+            $_GET['login'],
+            $_POST['name'],
+            $_POST['surname'],
+            $_POST['patronymic'],
+            $_POST['email'],
+            $_POST['privilege'],
+            $_POST['place_work'],
+            $_POST['location'],
+            $_POST['position'],
+            $_POST['foto'],
+            $_POST['password']
+        );
+
+        echo $result;
+    }
+
+    public function addUser()
+    {
+        $userObject = new \Model\User();
+        $result = $userObject->addUser(
+            $_POST['login'],
+            $_POST['name'],
+            $_POST['surname'],
+            $_POST['patronymic'],
+            $_POST['email'],
+            $_POST['privilege'],
+            $_POST['place_work'],
+            $_POST['location'],
+            $_POST['position'],
+            $_POST['foto'],
+            $_POST['password']
+        );
+
+        echo $result;
+    }
+
+    public function deleteUser()
+    {
+        $userObject = new \Model\User();
+        $result = $userObject->deleteUserByLogin($_GET['login']);
+
+        echo $result;
+    }
+
+    public function feedbackController()
+    {
+        $feedbackObject = new \Model\Feedback();
+        $feedbacks = $feedbackObject->getFeedbackList();
+
+        $this->render('feedback', ['list' => $feedbacks]);
+    }
+
+    public function deleteFeedback()
+    {
+        $id = $_GET['id'];
+        $feedbackObject = new \Model\Feedback();
+        $result = $feedbackObject->deleteFeedbackById($id);
+
+        echo $result;
+    }
+
+    public function associatedController()
+    {
+        $userObject = new \Model\User();
+        $category = (new \Model\Task())->getCategoryList();
+        $classes = (new \Model\Student())->getClassesList();
+        $position = $userObject->getPositionList();
+        $privilege = $userObject->getPrivilegeList();
+        $type = (new \Model\Location())->getTypeList();
+        $this->render('associate', [
+            'category_task' => $category,
+            'classes' => $classes,
+            'position' => $position,
+            'privilege' => $privilege,
+            'type' => $type
+        ]);
     }
 }

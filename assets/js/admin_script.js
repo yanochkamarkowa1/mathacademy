@@ -32,7 +32,7 @@ $(document).on('click', 'button.element__save', function (event) {
 
 $(document).on('click', 'button.element__delete', function (event) {
     event.preventDefault();
-    if(confirm("Удалить элемент?")){
+    if(confirm("Вы действительно хотите удалить элемент?")){
         var url = $(this).data('url');
         $.ajax({
             url: url,

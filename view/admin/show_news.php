@@ -36,8 +36,14 @@
             <td><textarea type="text" name="content"><?=$item['news']['content']?></textarea></td>
         </tr>
         <tr>
-            <td colspan="2"><button class="element__save" data-url="/admin/save_news/?id=<?=$item['news']['id']?>">Сохранить</button>
-            <button class="element__delete" data-url="/admin/delete_news/?id=<?=$item['news']['id']?>">Удалить</button></td>
+            <td colspan="2">
+            <?if(isset($item['news']['id'])):?>
+                <button class="element__save" data-url="/admin/save_news/?id=<?=$item['news']['id']?>">Сохранить</button>
+                <button class="element__delete" data-url="/admin/delete_news/?id=<?=$item['news']['id']?>">Удалить</button>
+            <?else:?>
+                <button class="element__save" data-url="/admin/add_news/">Добавить</button>
+            <?endif;?>
+            </td>
         </tr>
     </table>
 </form>

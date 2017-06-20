@@ -48,8 +48,14 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2"><button class="element__save" data-url="/admin/save_student/?id=<?=$item['student']['id']?>">Сохранить</button>
-                <button class="element__delete" data-url="/admin/delete_student/?id=<?=$item['student']['id']?>">Удалить</button></td>
+            <td colspan="2">
+            <?if(isset($item['student']['id'])):?>
+                <button class="element__save" data-url="/admin/save_student/?id=<?=$item['student']['id']?>">Сохранить</button>
+                <button class="element__delete" data-url="/admin/delete_student/?id=<?=$item['student']['id']?>">Удалить</button>
+            <?else:?>
+                <button class="element__save" data-url="/admin/add_student/">Добавить</button>
+            <?endif;?>
+            </td>
         </tr>
     </table>
 </form>

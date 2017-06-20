@@ -62,4 +62,24 @@ class Feedback extends EntityBase
         }
 
     }
+
+    public function getFeedbackList()
+    {
+        $feedbacks = $this->pdo->query("SELECT * FROM `feedback`");
+        $result = [];
+        while ($feedback = $feedbacks->fetch()){
+            $feedback['data'] = date('d.m.Y', strtotime($feedback['data']));
+            $result[] = $feedback;
+        }
+        return $result;
+    }
+
+    public function deleteFeedbackById($id)
+    {
+        $query = "DELETE FROM `feedback` WHERE `id` = '$id'";
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        return ($result->rowCount()) ? true : false;
+    }
 }

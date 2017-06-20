@@ -12,12 +12,12 @@
                 <td><?=$item['id']?></td>
                 <td><?=$item['name_category']?></td>
                 <td><?=$item['name']?></td>
-                <td><button class="location" data-id="<?=$item['id']?>">Изменить</button></td>
+                <td><button class="show__popup" data-url="/admin/show_task/?id=<?=$item['id']?>">Изменить</button></td>
             </tr>
         <?endforeach;?>
         <tr>
             <td colspan="3"></td>
-            <td><button>Добавить</button></td>
+            <td><button class="show__popup" data-url="/admin/show_task/">Добавить</button></td>
         </tr>
     </table>
 </div>

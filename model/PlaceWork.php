@@ -32,6 +32,15 @@ class PlaceWork extends EntityBase
         return ($result->rowCount()) ? true : false;
     }
 
+    public function addPlaceWork($name, $email, $address)
+    {
+        $query = "INSERT INTO `place_work` (`name`, `email`, `address`) VALUES ('$name', '$email', '$address')";
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        return ($result->rowCount()) ? true : false;
+    }
+
     public function deletePlaceWorkById($id)
     {
         $query = "DELETE FROM `place_work` WHERE `id` = '$id'";

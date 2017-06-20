@@ -30,16 +30,7 @@ class Student extends EntityBase
               WHERE student.id = '$id'"
         )->fetch();
 
-        $placeWork = (new PlaceWork())->getPlaceWorkList();
-        $location = (new Location())->getLocationList();
-        $classes = $this->pdo->query("SELECT * FROM classes")->fetchAll();
-
-        return [
-            'student' => $student,
-            'place_work' => $placeWork,
-            'location' => $location,
-            'classes' => $classes
-        ];
+        return $student;
     }
 
     public function saveStudent($id, $name, $surname, $patronymic, $placeWork, $classes, $location)
@@ -49,6 +40,22 @@ class Student extends EntityBase
         $result->execute();
 
         return ($result->rowCount()) ? true : false;
+    }
+
+    public function addStudent($name, $surname, $patronymic, $placeWork, $classes, $location)
+    {
+        $query = "INSERT INTO `student` (`name`, `surname`, `patronymic`, `pleace_work`, `classes`, `location`) VALUES ('$name', '$surname', '$patronymic', '$placeWork', '$classes', '$location')";
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        return ($result->rowCount()) ? true : false;
+    }
+
+    public function getClassesList()
+    {
+        $classes = $this->pdo->query("SELECT * FROM classes")->fetchAll();
+
+        return $classes;
     }
 
     public function deleteStudentById($id)

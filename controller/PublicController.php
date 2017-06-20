@@ -34,7 +34,7 @@ class PublicController
     public function indexController()
     {
         $newsObject = new \Model\News();
-        $news = $newsObject->getNewsList(1, 5)['news'];
+        $news = $newsObject->getNewsList(1, 5);
         $this->render('index', ['news' => $news]);
     }
 
@@ -42,7 +42,7 @@ class PublicController
     {
         $page = $_GET['page'] ? : 1;
         $newsObject = new \Model\News();
-        $news = $newsObject->getNewsList($page)['news'];
+        $news = $newsObject->getNewsList($page);
         $pagination = $newsObject->getPagination();
         $this->render('news', ['news' => $news, 'pagination' => $pagination]);
     }
@@ -51,7 +51,7 @@ class PublicController
     {
         $newsId = $_GET['id'];
         $newsObject = new \Model\News();
-        $newsDetail = $newsObject->getNewsById($newsId)['news'];
+        $newsDetail = $newsObject->getNewsById($newsId);
         $this->render('news_detail', ['newsDetail' => $newsDetail]);
     }
 

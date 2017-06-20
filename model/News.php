@@ -31,11 +31,7 @@ class News extends EntityBase
             $item['data'] = date('d.m.Y', strtotime($item['data']));
             $news[] = $item;
         }
-        $images = $this->pdo->query("SELECT * FROM `images`")->fetchAll();
-        return [
-            'news' => $news,
-            'images' => $images
-        ];
+        return $news;
     }
 
     /**
@@ -70,17 +66,23 @@ class News extends EntityBase
                 WHERE `id` = $id"
         )->fetch();
         $news['data'] = date('d.m.Y', strtotime($news['data']));
-        $images = (new \Model\Images())->getImageList();
-        return [
-            'news' => $news,
-            'images' => $images
-        ];
+        return $news;
     }
 
     public function saveNews($id, $data, $name, $description, $content, $foto)
     {
         $data = date("Y-m-d", strtotime($data));
         $query = "UPDATE `news` SET `data` = '$data', `name` = '$name', `description` = '$description', `content` = '$content', `foto` = '$foto' WHERE `id` = '$id'";
+        $result = $this->pdo->prepare($query);
+        $result->execute();
+
+        return ($result->rowCount()) ? true : false;
+    }
+
+    public function addNews($data, $name, $description, $content, $foto)
+    {
+        $data = date("Y-m-d", strtotime($data));
+        $query = "INSERT INTO `news` (`data`, `name`, `description`, `content`, `foto`) VALUES ('$data', '$name', '$description', '$content', '$foto')";
         $result = $this->pdo->prepare($query);
         $result->execute();
 
