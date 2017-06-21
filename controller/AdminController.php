@@ -90,9 +90,9 @@ class AdminController
 
     public function locationController()
     {
-            $locationObject = new \Model\Location();
-            $locationList = $locationObject->getLocationList();
-            $this->render('location', ['list' => $locationList]);
+        $locationObject = new \Model\Location();
+        $locationList = $locationObject->getLocationList();
+        $this->render('location', ['list' => $locationList]);
     }
 
     public function newsController()
@@ -134,7 +134,6 @@ class AdminController
     {
         $imagesObject = new \Model\Images();
         $result = $imagesObject->getImageList();
-
         $this->render('images', ['list' => $result]);
     }
 
@@ -333,8 +332,7 @@ class AdminController
             echo false;
             return;
         }
-        $foto = $result;
-        $imageObject->addImage($_POST['name'], $foto);
+        $imageObject->addImage($_POST['name'], $result);
 
         echo true;
     }

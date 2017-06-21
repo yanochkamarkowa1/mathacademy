@@ -40,8 +40,12 @@ class Router
         } elseif ($this->route == 'feedback') {
             $publicController->feedbackController();
 
-        } elseif ($this->route == 'admin') {
-            if($_SESSION['admin']) {
+        } elseif ($this->route == 'admin'){
+            $rights = false;
+            if(!empty($_SESSION)) {
+                $rights = $_SESSION['admin']['rights'] ?: false;
+            }
+            if($rights == 1) {
                 if ($this->param == null) {
                     $adminController->indexController();
                 } elseif ($this->param == 'logout') {
@@ -66,9 +70,7 @@ class Router
                     $adminController->saveLocation();
                 } elseif ($this->param == 'add_location') {
                     $adminController->addLocation();
-                } elseif ($this->param == 'add_location') {
-                    $adminController->addLocation();
-                }  elseif ($this->param == 'delete_location') {
+                } elseif ($this->param == 'delete_location') {
                     $adminController->deleteLocation();
                 } elseif ($this->param == 'show_news') {
                     $adminController->showNews();
@@ -122,6 +124,42 @@ class Router
                     $adminController->deleteFeedback();
                 } elseif ($this->param == 'associate') {
                     $adminController->associatedController();
+                } else {
+                    echo 404;
+                }
+            } elseif ($rights == 2) {
+                if ($this->param == null) {
+                    $adminController->indexController();
+                } elseif ($this->param == 'logout') {
+                    $adminController->logoutController();
+                } elseif ($this->param == 'student') {
+                    $adminController->studentController();
+                } elseif ($this->param == 'task') {
+                    $adminController->taskController();
+                } elseif ($this->param == 'images') {
+                    $adminController->imagesController();
+                } elseif ($this->param == 'show_student') {
+                    $adminController->showStudent();
+                } elseif ($this->param == 'save_student') {
+                    $adminController->saveStudent();
+                } elseif ($this->param == 'add_student') {
+                    $adminController->addStudent();
+                } elseif ($this->param == 'delete_student') {
+                    $adminController->deleteStudent();
+                } elseif ($this->param == 'show_task') {
+                    $adminController->showTask();
+                } elseif ($this->param == 'save_task') {
+                    $adminController->saveTask();
+                } elseif ($this->param == 'add_task') {
+                    $adminController->addTask();
+                } elseif ($this->param == 'delete_task') {
+                    $adminController->deleteTask();
+                } elseif ($this->param == 'show_image') {
+                    $adminController->showImage();
+                } elseif ($this->param == 'add_image') {
+                    $adminController->addImage();
+                } elseif ($this->param == 'delete_image') {
+                    $adminController->deleteImage();
                 } else {
                     echo 404;
                 }

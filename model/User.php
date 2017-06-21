@@ -63,10 +63,14 @@ class User extends EntityBase
     public function checkLogin($login, $pass)
     {
         $password = $pass;
-        $query = "SELECT `users`.`password` FROM `users` WHERE `users`.`login` = '$login'";
-        $resultPassword = $this->pdo->query($query)->fetch()['password'];
-        if (hash_equals($resultPassword, crypt($password, $resultPassword))) {
-            return $login;
+        $query = "SELECT `users`.`password`, `users`.`rights`  FROM `users` WHERE `users`.`login` = '$login'";
+        $result = $this->pdo->query($query)->fetch();
+        $resultPassword = $result['password'];
+        if (hash_equals($resultPassword, crypt($password, $resultPassword)) && ($result['rights'] == 1 || $result['rights'] == 2)) {
+            return [
+                'login' => $login,
+                'rights' => $result['rights']
+            ];
         } else {
             return false;
         }

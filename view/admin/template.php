@@ -13,21 +13,25 @@
         <li><a href="/">Вернуться на сайт</a></li>
     </ul>
     <ul>
-        <li><a href="/admin/location/">Местоположения</a></li>
-        <li><a href="/admin/news/">Новости</a></li>
-        <li><a href="/admin/place_work/">Места работы</a></li>
+        <?if($_SESSION['admin']['rights'] == 1):?>
+            <li><a href="/admin/location/">Местоположения</a></li>
+            <li><a href="/admin/news/">Новости</a></li>
+            <li><a href="/admin/place_work/">Места работы</a></li>
+            <li><a href="/admin/user/">Пользователи</a></li>
+        <?endif;?>
         <li><a href="/admin/student/">Учащиеся</a></li>
         <li><a href="/admin/task/">Задачи</a></li>
-        <li><a href="/admin/user/">Пользователи</a></li>
         <li><a href="/admin/images/">Изображения</a></li>
     </ul>
-    <ul>
-        <li><a href="/admin/feedback/">Обратная связь</a></li>
-        <li><a href="/admin/associate/">Связанные сущности</a></li>
-    </ul>
+    <?if($_SESSION['admin']['rights'] == 1):?>
+        <ul>
+            <li><a href="/admin/feedback/">Обратная связь</a></li>
+            <li><a href="/admin/associate/">Связанные сущности</a></li>
+        </ul>
+    <?endif;?>
 </div>
 <main class="main">
-    <header class="header">Вы зашли под логином <?=$_SESSION['admin']?>. <a href="/admin/logout/">Выйти</a></header>
+    <header class="header">Вы зашли под логином <?=$_SESSION['admin']['login']?>. <a href="/admin/logout/">Выйти</a></header>
     <?= $content ?>
 </main>
 <footer class="footer">Академия занимательной математики. <?=date('Y')?></footer>
