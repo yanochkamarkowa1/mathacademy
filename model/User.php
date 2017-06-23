@@ -28,7 +28,8 @@ class User extends EntityBase
           LEFT JOIN `location` ON `users`.`location` = `location`.`id`
           LEFT JOIN `position` ON `users`.`position` = `position`.`id`
           LEFT JOIN `images` ON `users`.`foto` = `images`.`name`
-        WHERE `users`.`rights` = 2";
+        WHERE `users`.`rights` = 2
+        ORDER BY `users`.`login` DESC";
 
         $teachers = $this->pdo->query($query)->fetchAll();
 
@@ -66,6 +67,9 @@ class User extends EntityBase
         $query = "SELECT `users`.`password`, `users`.`rights`  FROM `users` WHERE `users`.`login` = '$login'";
         $result = $this->pdo->query($query)->fetch();
         $resultPassword = $result['password'];
+        if(empty($resultPassword)){
+            return false;
+        }
         if (hash_equals($resultPassword, crypt($password, $resultPassword)) && ($result['rights'] == 1 || $result['rights'] == 2)) {
             return [
                 'login' => $login,

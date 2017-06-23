@@ -8,7 +8,7 @@ class Feedback extends EntityBase
 {
     public function addFeedback($fullName, $email, $text, $captcha)
     {
-        $secret = '6LdJ8RgUAAAAAFtTCdZx7FlYdNtVQYZM1U01p_8Z'; /*TODO поменять при переносе*/
+        $secret = '6LegoiYUAAAAALhl-eEJbQS-k4ef1QC5yjVR9_XG';
         $date = date('Y-m-d');
         $errors = [];
         $isError = false;

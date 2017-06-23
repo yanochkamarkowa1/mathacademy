@@ -33,7 +33,7 @@
                 <?if($errors['captcha']):?>
                     <div class="form__error"><?=$errors['captcha']?></div>
                 <?endif;?>
-                <div class="g-recaptcha" data-sitekey="6LdJ8RgUAAAAAPPjRP5xh6otObhJbOJMFFWdDvu4"></div> <!--TODO поменять при переносе-->
+                <div class="g-recaptcha" data-sitekey="6LegoiYUAAAAANrJAl6LKQNgRtUspI4V_5AjxB55"></div>
             </td>
         </tr>
         <tr>

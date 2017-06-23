@@ -6,11 +6,20 @@ namespace Model;
  */
 class DbConfig
 {
-    private $host = '127.0.0.1';
-    private $db   = 'academy';
-    private $user = 'root';
+    private $host = '';
+    private $db   = '';
+    private $user = '';
     private $pass = '';
     private $charset = 'utf8';
+
+    public function __construct()
+    {
+        require ($_SERVER['DOCUMENT_ROOT'].'/.dbconf.php');
+        $this->host = $host;
+        $this->user = $user;
+        $this->pass = $pass;
+        $this->db = $db;
+    }
 
     /**
      * Производит подключение к базе данных

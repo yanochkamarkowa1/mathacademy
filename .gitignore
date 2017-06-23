@@ -2,3 +2,4 @@
 /upload/
 /vendor/
 /cache/
+/.dbconf.php
